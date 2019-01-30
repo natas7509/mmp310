@@ -7,24 +7,26 @@ characters
 
 function setup() {
 	createCanvas(500, 500);
+   
 }
 
 function draw() {
    
    
     
-   
+     background(233);
+    
     
     fill ("blue")
     noStroke()
-	ellipse(300, 200, 100, 100);
+	ellipse(250, 300, 100, 100);
     	
     // arc
     
     stroke("black")
     strokeWeight(2)
     fill("green")
-    arc(300, 300, 250, 200, 0, PI);
+    arc(250, 100, 250, 200, 0, PI);
 
     
    
