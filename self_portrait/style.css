@@ -1,0 +1,35 @@
+body {
+  font-family: Helvetica;
+  margin: 0;
+  padding: 0;
+  background-color: aliceblue;
+  color: green;
+}
+
+/*
+#container {
+  padding: 50px 0;
+  width: 500px;
+  
+}
+*/
+
+/*
+.link {
+  list-style: none;
+  color: red;
+  font-size: 2em;
+}
+
+.link a {
+  color: orange;
+}
+
+a {
+  color: red;
+  transition: color 500ms
+}
+
+a:hover {
+  color: white;
+}*/
