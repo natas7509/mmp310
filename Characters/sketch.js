@@ -39,11 +39,11 @@ function setup() {
   textFont("roboto");
   textAlign(CENTER, CENTER);
   storyX = width / 2;
-  storyY = height - 40;
+  storyY = height - 200;
 }
 
 function draw() {
-  background(50);
+  background(255, 255, 200); // background color
 
   // Male Blue character
   fill("blue");
@@ -82,7 +82,9 @@ function draw() {
   fill("red");
   rect(970, 400, 60, 200, 100);
   fill("white");
-//  rect(900, 380, 200, 100, 20);
+  rect(920, 380, 155, 100, 100);
+
+  fill("#7FEFBD"); // dress color)
   triangle(890, 520, 1000, 380, 1100, 520);
 
   //Neck
@@ -92,8 +94,7 @@ function draw() {
 
   //text
   textStyle("italic");
-  fill("white");
-  stroke("rgb(0,255,0)");
-  strokeWeight(1.7);
+  fill("black");
+
   text(story, storyX, storyY);
 }
