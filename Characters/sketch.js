@@ -21,8 +21,9 @@ var mouthH = 50;
 
 var redX = 1000;
 var redY = 300;
-var redSize = 150;
+var redSize = 160;
 var redEyeSize = redSize / 8;
+var pupil;
 
 var redmouthX = 1000;
 var redmouthY = 330;
@@ -39,7 +40,7 @@ function setup() {
   textFont("roboto");
   textAlign(CENTER, CENTER);
   storyX = width / 2;
-  storyY = height - 200;
+  storyY = height / 6;
 }
 
 function draw() {
@@ -54,9 +55,13 @@ function draw() {
   noStroke();
   ellipse(blueX + blueEyeSize * 2.75, blueY - blueEyeSize, blueEyeSize); // left eye
   ellipse(blueX - blueEyeSize * 0.5, blueY - blueEyeSize, blueEyeSize); // right eye
+
+  stroke(0);
+  strokeWeight(2);
   arc(mouthX, mouthY, mouthW, mouthH, 0, PI + QUARTER_PI, OPEN); //mouth
 
   //body
+  noStroke();
   fill("blue");
   rect(575, 400, 60, 200, 100);
   fill("white");
@@ -76,9 +81,14 @@ function draw() {
   noStroke();
   ellipse(redX + redEyeSize * 2.75, redY - redEyeSize, redEyeSize); // left eye
   ellipse(redX - redEyeSize * 0.5, redY - redEyeSize, redEyeSize); // right eye
+//  fill("black");
+//  ellipse(993, 278, 8, 8);
+  stroke(0);
+  strokeWeight(2);
   arc(redmouthX, redmouthY, redmouthW, redmouthH, 0, PI + QUARTER_PI, OPEN); //mouth
 
   //body
+  noStroke();
   fill("red");
   rect(970, 400, 60, 200, 100);
   fill("white");
