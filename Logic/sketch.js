@@ -24,6 +24,10 @@ var redY = 300;
 var redSize = 160;
 var redEyeSize = redSize / 8;
 
+
+
+
+
 var redmouthX = 1000;
 var redmouthY = 330;
 var redmouthW = 30;
@@ -38,6 +42,16 @@ var captionX;
 var captionY;
 var captionSize = 24;
 
+var caption2 = "oh my god!!";
+var caption2X;
+var caption2Y;
+var caption2Size = 24;
+
+//settings: neutral, summer, melting, death
+var currentSetting = "neutral";
+var bgColor = "#B5E1FC";
+var redWasClicked = false;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   textSize(38);
@@ -47,30 +61,62 @@ function setup() {
   storyY = height / 6;
   captionX = width / 2;
   captionY = height / 6;
+  caption2X = 1000;
+  caption2Y = height - 720;
 }
 
 function draw() {
-  background(255, 255, 200); // background color
+  // settings
+  background(bgColor);
 
-  if (mouseIsPressed) {
-    // add text for Winter prompt
+  if (currentSetting == "neutral") {
+    textSize(38);
+    textFont("roboto");
+    fill("black");
+    text(story, storyX, storyY);
+
+    if (mouseIsPressed) {
+      currentSetting = "summer";
+      bgColor = "#B5E1FC";
+    }
+  } else if (currentSetting == "summer") {
+    // getting hotter? prompt
     background("orange");
     fill("red");
     textSize(captionSize);
     text(caption1, captionX, captionY);
     fill("red");
     textFont("roboto");
-  } else {
-    // day scene
-    background(255, 255, 200); // background color
-    fill("gold");
-    textSize(38);
-    textFont("roboto");
-    fill("black");
-    text(story, storyX, storyY);
   }
+  //redWoman response
+  if (mouseIsPressed) {
+    var redDistance = dist(mouseX, mouseY, redX, redY);
+  }
+  if (redDistance < redSize / 2) {
+    redWasClicked = true;
+    currentSetting = "melting";
+    background("orange");
+    fill("black");
+    textSize(caption2Size);
+    text(caption2, caption2X, caption2Y);
+    fill("red");
+    textFont("roboto");
+  } else if (currentSetting == "melting") {
+    // OMG death caption
+    background("black");
+    fill("red");
+    textSize(caption2Size);
+    text(caption2, caption2X, caption2Y);
+    fill("red");
+    textFont("roboto");
+       // Female red melting
+    
+ 
+  }
+ 
 
   // Male Blue character
+ 
   fill("blue");
   noStroke();
   ellipse(blueX, blueY, blueSize); // head
@@ -83,6 +129,7 @@ function draw() {
   stroke(0);
   strokeWeight(2);
   arc(mouthX, mouthY, mouthW, mouthH, 0, PI + QUARTER_PI, OPEN); //mouth
+    
 
   //body
   noStroke();
