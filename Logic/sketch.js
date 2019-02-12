@@ -2,12 +2,7 @@
 wk2_310
 v1.
 by Jon Darling
-<<<<<<< HEAD
-Logic sketch
-adding 3 settings
-=======
 Logic Settings 
->>>>>>> b18bd005f95eff10ad3dbe41014d3253fd4af3ce
 Interactive Story
 */
 
@@ -68,12 +63,6 @@ var story = "The Popsicles chose the wrong day to go outside!";
 var storyX;
 var storyY;
 
-<<<<<<< HEAD
-var caption1 = "is it getting hotter in here?";
-var captionX;
-var captionY;
-var captionSize = 24;
-=======
 //startStory
 var start = "click sun to start";
 var startX;
@@ -95,83 +84,8 @@ function preload() {
   blueManCaption = loadImage("blueManCaption.png");
   redWomanCaption = loadImage("redWomanCaption.png");
 }
->>>>>>> b18bd005f95eff10ad3dbe41014d3253fd4af3ce
-
-// settings: neutral, summer, melting/death
-var currentSetting = "neutral";
-var bgColor = "lightblue";
-
 
 function setup() {
-<<<<<<< HEAD
-    createCanvas(windowWidth, windowHeight);
-    textSize(38);
-    textFont("roboto");
-    textAlign(CENTER, CENTER);
-    storyX = width / 2;
-    storyY = (100);
-    captionX = width / 2;
-    captionY = height / 6;
-}
-
-function draw() {
-
-// settings
-	background(bgColor);
-
-
-
-//    background(255, 255, 200); // background color
-    
-    if (currentSetting == "neutral") 
-		
-
-		// to change the scene
-		if (mouseIsPressed) {
-			currentSetting = "summer";
-			bgColor = "orange";
-		}
-    
-    else if (currentSetting == "evening") {
-		fill('orange');
-		noStroke();
-		ellipse(sunX, sunY + 100, sunSize);
-		
-		// click on a character to eat it
-		if (mouseIsPressed) {
-			var orangeDistance = dist(mouseX, mouseY, orangeX, orangeY);
-			if (orangeDistance < orangeSize / 2) {
-				fruitEaten = "orange";
-				orangeWasClicked = true;
-				currentSetting = "night";
-				bgColor = "darkblue";
-			}
-
-
-//
-//    if (mouseIsPressed) {
-//        // add text for summer prompt
-//
-//        fill("red");
-//        textSize(captionSize);
-//        text(caption1, captionX, captionY);
-//        fill("red");
-//        textFont("roboto");
-//    } else {
-//        // day scene
-//        background(255, 255, 200); // background color
-//        fill("gold");
-//        textSize(38);
-//        textFont("roboto");
-//        fill("black");
-//        text(story, storyX, storyY);
-//    }
-
-    // Male Blue character
-    fill("blue");
-    noStroke();
-    ellipse(blueX, blueY, blueSize); // head
-=======
   createCanvas(windowWidth, windowHeight);
   //  createCanvas(600, 600);
   textSize(38);
@@ -207,15 +121,12 @@ function draw() {
     stroke(0);
     strokeWeight(2);
     arc(mouthX, mouthY, mouthW, mouthH, 0, PI + QUARTER_PI, OPEN); //mouth
->>>>>>> b18bd005f95eff10ad3dbe41014d3253fd4af3ce
 
     fill("white");
     noStroke();
     ellipse(blueX + blueEyeSize * 2.75, blueY - blueEyeSize, blueEyeSize); // left eye
     ellipse(blueX - blueEyeSize * 0.5, blueY - blueEyeSize, blueEyeSize); // right eye
 
-<<<<<<< HEAD
-=======
     //body
     noStroke();
     fill("blue");
@@ -272,19 +183,15 @@ function draw() {
     noStroke();
     ellipse(blueX, blueY, blueSize); // head
     fill("white");
->>>>>>> b18bd005f95eff10ad3dbe41014d3253fd4af3ce
     stroke(0);
     strokeWeight(2);
     arc(mouthX, mouthY, mouthW, mouthH, 0, PI + QUARTER_PI, OPEN); //mouth
 
-<<<<<<< HEAD
-=======
     fill("white");
     noStroke();
     ellipse(blueX + blueEyeSize * 2.75, blueY - blueEyeSize, blueEyeSize); // left eye
     ellipse(blueX - blueEyeSize * 0.5, blueY - blueEyeSize, blueEyeSize); // right eye
 
->>>>>>> b18bd005f95eff10ad3dbe41014d3253fd4af3ce
     //body
     noStroke();
     fill("blue");
@@ -292,14 +199,6 @@ function draw() {
     fill("white");
     rect(500, 400, 200, 100, 20);
 
-<<<<<<< HEAD
-    //Neck
-    noStroke();
-    fill(190); // neck color
-    arc(600, 400, 200, 20, 100, PI + QUARTER_PI); // Neck shape
-
-    // Female red character
-=======
     //neck
     noStroke();
     fill(190); // neck color
@@ -395,7 +294,6 @@ function draw() {
 
   // Male Blue character // (THE STATE BEFORE YOU CLICK REDWOMAN !!)
   if (!redWasClicked) {
->>>>>>> b18bd005f95eff10ad3dbe41014d3253fd4af3ce
     fill("red");
     noStroke();
     ellipse(redX, redY, redSize); // head
@@ -405,10 +303,7 @@ function draw() {
     ellipse(redX + redEyeSize * 2.75, redY - redEyeSize, redEyeSize); // left eye
     ellipse(redX - redEyeSize * 0.5, redY - redEyeSize, redEyeSize); // right eye
 
-<<<<<<< HEAD
-=======
     //red woman mouth
->>>>>>> b18bd005f95eff10ad3dbe41014d3253fd4af3ce
     stroke(0);
     strokeWeight(2);
     arc(redmouthX, redmouthY, redmouthW, redmouthH, 0, PI + QUARTER_PI, OPEN); //mouth
@@ -426,10 +321,6 @@ function draw() {
     //Neck
     noStroke();
     fill(190); // neck color
-<<<<<<< HEAD
-    arc(1000, 375, 170, 20, 100, PI + QUARTER_PI); // Neck shape
-}
-=======
     arc(1000, 380, 170, 25, 100, PI + QUARTER_PI); // Neck shape
   }
 
@@ -438,4 +329,3 @@ function draw() {
   fill("#FFD800"); // sunColor
   ellipse(sunX, sunY, sunSize); // sun shape
 }
->>>>>>> b18bd005f95eff10ad3dbe41014d3253fd4af3ce
