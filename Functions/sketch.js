@@ -4,65 +4,111 @@
 	plot sketch, adding functions
 */
 
-// global variables
-var story = "Once there were the Popsicles";
-var storyX;
-var storyY;
 
-var chapter = "morning"; // day, night
+
+// global variables
+
+var whichObject;
+
+
+
+var chapter = "neutral"; // day, night
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  textSize(40);
-  textAlign(CENTER, CENTER);
-  storyX = width / 2;
-  storyY = height - 50;
+    createCanvas(windowWidth, windowHeight);
+    //    textSize(40);
+    textAlign(CENTER, CENTER);
+    storyX = width / 2;
+    storyY = height - 50;
 }
 
 function draw() {
-  background(50);
+    background("#D2E9F7");
 
-  if (chapter == "morning") {
-    blueHead(600, 200); // first character
-    redHead(1000, 200);
-  } else if (chapter == "day") {
-    blueMan(300, 150);
-    banana(400, 75);
-  } else if (chapter == "night") {
-    blueMan(600, 100);
-    banana(700, 50);
-  }
+    if (chapter == "neutral") {
+        blueHead(600, 200); // blue character
+        redHead(1000, 200); //red character
+        sun(100, 120, 100);
+        narrative("The Popsicles chose the wrong day to go outside!", "Click on the sun to see what happened.");
+    } else if (chapter == "summer") {
+        blueHead(600, 180); // first character
+        redHead(1040, 160); //red character
+        sun(100, 120, 100);
+         narrative("merridith warned gary what might happen.", "click on her mouth to see the consequences");
+    } else if (chapter == "melted") {
+        blueHead(600, 240); // first character
+        redHead(1000, 300); //red character
+        sun(100, 120, 100);
+        narrative("The Popsicles chose the wrong day to go outside!", "Click on the sun to see what happened.");
+    }
 
-  stroke(255);
-  text(story, storyX, storyY);
+    
 }
 
 function mouseClicked() {
-  if (chapter == "morning") chapter = "day";
-  else if (chapter == "day") chapter = "night";
-  else if (chapter == "night") chapter = "morning";
+    // change chapter
+    if (chapter == "neutral") chapter = "summer";
+     var sunDist = dist(mouseX, mouseY, 800, 200);
+        if (sunDist < 100 / 2) {
+            whichObject = "blueHead";
+            chapter = "melted";
+  
+} else if (chapter == "melted") chapter = "neutral";
+
+    // detect which character is clicked
+    else if (chapter == "summer") {
+        // clicked the blueMan
+       
+        }
+        // clicked redWoman
+        var redDist = dist(mouseX, mouseY, 400, 100);
+        if (redDist < 150 / 2) {
+            whichObject = "redHead";
+            chapter = "melted";
+        }
+
 }
 
 function blueHead(x, s) {
-  var eyeSize = s / 10;
-  fill("blue");
-  noStroke();
-  ellipse(x, 200, s); // body
-  fill("white");
-  stroke(0);
-  ellipse(x + eyeSize * 3, 200 - eyeSize, eyeSize); // left eye
-  ellipse(x, 200 - eyeSize, eyeSize); // right eye
-  arc(642, 230, 50, 35, 0, PI + QUARTER_PI, OPEN);
+    var eyeSize = s / 9;
+    fill("blue");
+    noStroke();
+    ellipse(x, 200, s); // body
+    fill("white");
+    stroke(0);
+    ellipse(x + eyeSize * 3, 200 - eyeSize, eyeSize); // left eye
+    ellipse(x, 200 - eyeSize, eyeSize); // right eye
+    arc(x, 240, 50, 35, 0, PI + QUARTER_PI, OPEN);
 }
 
-function redHead(x,s) {
+function redHead(x, s) {
     var eyeSize = s / 10;
-  fill("red");
-  noStroke();
-  ellipse(x, 200, s); // body
-  fill("white");
-  stroke(0);
-  ellipse(x + eyeSize * 3, 200 - eyeSize, eyeSize); // left eye
-  ellipse(x, 200 - eyeSize, eyeSize); // right eye
-  arc(1042, 230, 40, 45, 0, PI + QUARTER_PI, OPEN); 
+    fill("red");
+    noStroke();
+    ellipse(x, 200, s); // body
+    fill("white");
+    stroke(0);
+    ellipse(x + eyeSize * 3, 200 - eyeSize, eyeSize); // left eye
+    ellipse(x, 200 - eyeSize, eyeSize); // right eye
+    arc(1042, 230, 40, 45, 0, PI + QUARTER_PI, OPEN);
+}
+
+function sun(x, y, s) {
+
+    //sun
+    noStroke();
+    fill("#FFD800"); // sunColor
+    ellipse(x, y, s); // sun shape
+}
+
+function narrative(story, instructions) {
+    // narrative
+    fill('black');
+    stroke(255);
+    textSize(40);
+    text(story, width / 2, height - 200);
+    // instructions
+    fill ('red');
+    textSize(25);
+    text(instructions, width / 2, height - 70);
 }
