@@ -51,11 +51,17 @@ function draw() {
   } else if (chapter == "melted") {
     background(255, 185, 45);
     sun(250, 90, 150);
+
     meltBlueMan(600, 450, 500, 150);
     meltredWoman(1100, 400, 480, 140);
     image(redWomanCaption, 1100, 220);
     //      arc(1000, 295, 170, 25, 100, PI + QUARTER_PI); // neck shape
     narrative("The Popsicles perished through stupidity", "");
+
+    //var meltblueX = 589;
+    //var meltblueY = 420;
+    //var meltblueSize = 179;
+    //var meltblueEyeSize = blueSize / 8;
   }
 }
 function mouseClicked() {
@@ -167,6 +173,7 @@ function meltBlueMan(x, y, w, s) {
   fill("white");
   noStroke();
   ellipse(x + 100, y + 100, w - 30, s - 30); //white Body Melted
+  //  ellipse(x + 100, y + 100, w - 30, s - 30); //white Body Melted
 
   var eyeSize = s / 10;
   fill("blue");
