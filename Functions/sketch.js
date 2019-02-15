@@ -9,6 +9,10 @@
 var whichObject;
 var chapter = "neutral"; // summer, melted
 
+var r = 255;
+var g;
+var b = 255;
+
 function preload() {
   blueManCaption = loadImage("blueManCaption.png");
   redWomanCaption = loadImage("redWomanCaption.png");
@@ -26,56 +30,73 @@ function draw() {
 
   if (chapter == "neutral") {
     blueMan(500, 200, 200); // blue character
-    redHead(1000, 200);
-    sun(100, 120, 100);
+    redWoman(1000, 200);
+    sun(17, 80, 100);
 
     narrative(
       "The Popsicles chose the wrong day to go outside!",
       "Click on the sun to see what happened."
     );
   } else if (chapter == "summer") {
+    heating(255, 0, 255);
     blueMan(550, 215, 200); // first character
-    redHead(1000, 185); //red character
-    sun(100, 120, 100);
-     
-   
+    redWoman(1000, 200); //red character
+    sun(117, 80, 130);
+
     narrative(
       "Meredith warned Gary what might happen.",
-      "click on his mouth to see the consequences"
+      "click on her mouth to see the consequences"
     );
-    image(blueManCaption, 565, 75); //blue mouth bubble
+    image(blueManCaption, 555, 75); //blue mouth bubble
   } else if (chapter == "melted") {
-    sun(120, 120, 150);
+    background(255, 185, 45);
+    sun(250, 90, 150);
     meltBlueMan(600, 450, 500, 150);
     meltredWoman(1100, 400, 480, 140);
-    narrative("They weren't getting along anyway", "");
-         
+    image(redWomanCaption, 1100, 220);
+    //      arc(1000, 295, 170, 25, 100, PI + QUARTER_PI); // neck shape
+    narrative("The Popsicles perished through stupidity", "");
   }
 }
 function mouseClicked() {
   // change chapter
   if (chapter == "neutral") chapter = "neutral";
-  var sunDist = dist(mouseX, mouseY, 100, 120);
+  var sunDist = dist(mouseX, mouseY, 17, 80);
   if (sunDist < 100 / 2) {
     whichObject = "sun";
     chapter = "summer";
   } else if (chapter == "melted") chapter = "neutral";
   // detect which character is clicked
-  else if (chapter == "summer")
-    // clicked the orange
-    var blueDist = dist(mouseX, mouseY, 600, 200);
-  if (blueDist < 180 / 2) {
-    whichObject = "blue";
-    chapter = "melted";
-  }
-  // clicked red
-  else if (chapter == "melted") {
-    var redDist = dist(mouseX, mouseY, 1000, 200);
-    if (redDist < 75 / 2) {
-      whichObject = "red";
+  else if (chapter == "melted")
+    if (chapter == "melted")
+      // clicked red
+      var redDist = dist(mouseX, mouseY, 1000, 200);
+  if (redDist < 200 / 2) {
+    whichObject = "red";
+  } else if (chapter == "summer") {
+    var blueDist = dist(mouseX, mouseY, 1000, 200);
+
+    if (blueDist < 200 / 2) {
+      whichObject = "blue";
+      chapter = "melted";
     }
   }
 }
+
+// else if (chapter == "summer")
+//    // clicked the orange
+//    var blueDist = dist(mouseX, mouseY, 600, 200);
+//  if (blueDist < 180 / 2) {
+//    whichObject = "blue";
+//    chapter = "melted";
+//  }
+//  // clicked red
+//  else if (chapter == "melted") {
+//    var redDist = dist(mouseX, mouseY, 1000, 200);
+//    if (redDist < 75 / 2) {
+//      whichObject = "red";
+//    }
+//  }
 
 function blueMan(x, y, s) {
   var eyeSize = s / 9;
@@ -84,7 +105,7 @@ function blueMan(x, y, s) {
   ellipse(x, y, s); // head
   fill("white");
   stroke(0);
-    strokeWeight(1);
+  strokeWeight(1);
   ellipse(x + eyeSize * 3, y - eyeSize, eyeSize); // left eye
   ellipse(x, y - eyeSize, eyeSize); // right eye
   var mouthPos = s / 10;
@@ -97,16 +118,20 @@ function blueMan(x, y, s) {
   var bodPos = s / 2;
   fill("white");
   rect(x - bodPos, y + 100, 200, 100, 20); //white body
+  //Neck
+  noStroke();
+  fill(190); // neck color
+  arc(x, y + 100, 170, 25, 100, PI + QUARTER_PI); // neck shape
 }
 
-function redHead(x, s) {
+function redWoman(x, s) {
   var eyeSize = s / 10;
   fill("red");
   noStroke();
   ellipse(x, 200, s); // body
   fill("white");
   stroke(0);
-    strokeWeight(1);
+  strokeWeight(1);
   ellipse(x + eyeSize * 3, 200 - eyeSize, eyeSize); // left eye
   ellipse(x, 200 - eyeSize, eyeSize); // right eye
   arc(1042, 230, 40, 45, 0, PI + QUARTER_PI, OPEN);
@@ -125,13 +150,13 @@ function redHead(x, s) {
   //Neck
   noStroke();
   fill(190); // neck color
-  arc(1000, 295, 170, 25, 100, PI + QUARTER_PI); // Neck shape
+  arc(x, 295, 170, 25, 100, PI + QUARTER_PI); // neck shape
 }
 
 function sun(x, y, s) {
   //sun
   noStroke();
-  fill("#FFD800"); // sunColor
+  fill("#FFD800"); // sun color
   ellipse(x, y, s); // sun shape
 }
 
@@ -150,7 +175,7 @@ function meltBlueMan(x, y, w, s) {
 
   fill("white");
   stroke(0);
-strokeWeight(1);
+  strokeWeight(1);
   ellipse(x + eyeSize * 3, y - eyeSize, eyeSize); // left eye
   ellipse(x, y - eyeSize + 20, eyeSize); // right eye
   var mouthPos = s / 10;
@@ -176,25 +201,24 @@ function meltredWoman(x, y, w, s) {
 
   fill("white");
   stroke(0);
-    strokeWeight(1);
+  strokeWeight(1);
   ellipse(x + eyeSize * 8, y + eyeSize, eyeSize); // left eye
   ellipse(x, y - eyeSize + 25, eyeSize); // right eye
   var mouthPos = s / 10;
   arc(x - mouthPos + 5, y - mouthPos - 10, 160, 10, 0, PI + HALF_PI, OPEN);
 }
-//function heating() {
-//     background(r, g, b);
-//     r = map(mouseX, 0, windowWidth, 250, 255);
-//    g = map(mouseX, 0, windowWidth, 255, 165);
-//    b = map(mouseX, 0, windowWidth, 255, 0);
-//   
-//}
+function heating() {
+  background(r, g, b);
+  r = map(mouseX, 0, windowWidth, 250, 255);
+  g = map(mouseX, 0, windowWidth, 255, 165);
+  b = map(mouseX, 0, windowWidth, 255, 0);
+}
 
 function narrative(story, instructions) {
   // narrative
 
   stroke("white");
-  strokeWeight(5);
+  strokeWeight(2);
   fill("black");
 
   textSize(40);
