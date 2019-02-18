@@ -221,7 +221,7 @@ function narrative(story, instructions) {
     fill("black");
 
     textSize(40);
-    text(story, width / 2, height - 140);
+    text(story, width / 2, height - 120);
     // instructions
     noStroke();
     fill("red");
