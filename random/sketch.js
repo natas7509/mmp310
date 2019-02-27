@@ -13,17 +13,17 @@ function setup() {
     rectMode(CENTER);
     noStroke();
     //face creations
-    let faceSize = random(70, 250);
+    let faceSize = random(30, 250);
     let increment = faceSize;
-    for (let x = 0; x <= width; x += increment) {
+    for (let x = 20; x <= width; x += increment) {
 
         let y = height / 2 + random(-100, 100);
 
         faceSize = random(100, 300);
         
-        let r = random(200);
-        let g = random(0, 200);
-        let b = random(0, 255);
+        let r = random(180);
+        let g = random(100, 200);
+        let b = random(100, 255);
         fill(r, g, b);
         ellipse(x, y, faceSize, 150,); // face
 
