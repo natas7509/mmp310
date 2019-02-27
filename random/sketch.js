@@ -37,24 +37,10 @@ function setup() {
         } else {
             fill('blue');
         }
-//        let r = random(200);
-//        let g = random(100, 220);
-//        let b = random(255);
-//        fill(r, g, b);
-//        ellipse(x, y, faceSize, 150,); // face
-//        var randomChoice = random(3); // making random choices 
-//        if (randomChoice > 2) {
-//            fill('red');
-//        } else if (randomChoice > 1) {
-//            fill('green');
-//        } else {
-//            fill('blue');
-//        }
+
 
         let eyeSize = faceSize / 7;
      
-        
-        
 
         if (random(1) > 0.9) {
             ellipse(x + eyeSize, y - eyeSize, eyeSize, 10); // left eye
