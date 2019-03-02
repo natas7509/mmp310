@@ -6,6 +6,9 @@ characters sketch
 loops
 */
 
+
+
+
 var s = 200;
 var y = 400;
 var eyeSize = 20;
