@@ -7,3 +7,11 @@ body {
   color: green;
 }
 
+button {
+    font-family: "roboto", sans-serif;
+    font-size: 2em;
+    background-color: burlywood;
+    border-collapse: yellow;
+    margin: 0.25em;
+    
+}
