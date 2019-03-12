@@ -4,52 +4,61 @@ MMP-310
 interface
 */
 
-
 var bg = "green";
 
 function setup() {
-    createCanvas(windowWidth, windowHeight / 2);
-    pattern();
+  createCanvas(windowWidth, windowHeight / 2);
 
-    var button = createButton('Save Image');
-    button.mousePressed(saveImage);
-    button.style('font-family 'roboto');
-    button.id = ('my-button');
-    button.class('interface');
+  button.mousePressed("save Image");
+  button.style("font-family", "roboto");
+  button.id = "my-button";
+  button.class("interface");
+  var button = createButton("Save Image");
+  var generatePattern = createButton("generate Pattern");
+  generatePattern.mousePressed.mousePressed(pattern);
 
-    var generatePattern = createButton("generate Pattern");
-    generatePattern.mousePressed.mousePressed(pattern);
+  background(220);
+  rectMode(CENTER);
+  textAlign(CENTER, CENTER);
 
+  var columns = 8;
+  var rows = 8;
+  var w = width / columns;
+  var h = height / rows;
 
-    background(220);
-    rectMode(CENTER);
-    textAlign(CENTER, CENTER);
-
-
-
-    var columns = 8;
-    var rows = 8;
-    var w = width / columns;
-    var h = height / rows;
-
-
-    for (let x = 0; x <= width; x += w) {
-        for (let y + 0; y <= height; y += h) {
-
-            var = random(3);
-            if (r > 2) {
-                ellipsex, y, w);
-        } else if (r > 1) {
-            rect(x + w / 2, y + h / 2, w, h);
-        } else {}
-
-
+  // nested for loop
+  for (let x = 0; x <= width; x += w) {
+    for (let y = 0; y <= height; y += h) {
+      // line(x1, y1, x2, y2);
+      stroke(255);
+      strokeWeight(2);
+      var r = random(3);
+      if (r > 2) {
+        line(x + w, y, x + w, y + h);
+      } else if (r > 1) {
+        line(x, y, x + w, y + h);
+      } else {
+        line(x + w, y, x, y + h);
+      }
     }
-
+  }
 }
 
-
-
+//    for (let x = 0; x <= width; x += w) {
+//        for (let y + 0; y <= height; y += h) {
+//
+//            var = random(3);
+//            if (r > 2) {
+//                ellipsex, y, w);
+//        } else if (r > 1) {
+//            rect(x + w / 2, y + h / 2, w, h);
+//        } else {}
+//
+//
+//    }
+//
+//}
+//
 
 //function saveImage()
 
