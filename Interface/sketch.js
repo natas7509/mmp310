@@ -1,27 +1,80 @@
-/*jon Darling
-week-6
-MMP-310
-interface
+/*
+	jon darling
+    MMP-310
+    dom-work
+    interface
 */
 
+/* global variables */
+var bg = "green";
+var g = 255;
+var columns = 10;
+var rows = 8;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight / 2);
-  background(220);
-  rectMode(CENTER);
-  textAlign(CENTER, CENTER);
+	createCanvas(windowWidth, windowHeight / 2);
+	pattern();
+	
+	var button = createButton("Save Image");
+	button.mousePressed(saveImage);
+//	button.style('color', bg);
+	button.style('font-family', 'monaco');
+	button.id('my-button');
+	button.class('interface');
+	button.position(width / 2, height - 40);
+	
+	
+	var generatePattern = createButton("Generate Pattern");
+	generatePattern.mousePressed(pattern);
+	generatePattern.class('interface');
+	generatePattern.position(width / 4, height - 40);
+	
+	// columns slider
+	createDiv("Number of Columns");
+	var columnSlider = createSlider(2, 100, columns);
+	columnSlider.input(setColumn);
+	
+	// rows 
+	
+	// bg color
+	createDiv("Background Color");
+	var colorSlider = createSlider(0, 255, g);
+	colorSlider.input(setColor);
+    
+    // rows 
+	
+	
+}
 
-  var columns = 9;
-  var rows = 7;
-  var w = width / columns;
-  var h = height / rows;
-  //    var cap = 'hello';
-  var button = createButton("Save Image");
-    var button = createButton("generate pattern");
-    button.mousePressed("generate pattern");
-   
+function setColumn() {
+	columns = this.value();
+	pattern();
+}
 
-  for (let x = 0; x <= width; x += w) {
+function setColor() {
+	g = this.value();
+	pattern();
+}
+function discs(x, y, w, h) {
+  var r = random(0, 255);
+  var g = random(0, 100);
+  var b = random(0, 255);
+  fill(r, g, b);
+  noStroke();
+  ellipse(x, y, w / 6);//main disc
+  stroke(255);
+  strokeWeight(2);
+  ellipse(x, y, 7, 3 + random(5));//inner disc
+}
+
+function pattern() {
+	background(0, g, 127);
+	
+	var w = width / columns;
+	var h = height / rows;
+	
+	
+    for (let x = 0; x <= width; x += w) {
     for (let y = 0; y <= height; y += h) {
       discs(x - w, y - h, w, h); //discs
 
@@ -48,144 +101,19 @@ function setup() {
         rect(x - w, y - h, w / 4, h / 4, 10); // blocks
       }
     }
-  }
 }
 
-function discs(x, y, w, h) {
-  var r = random(0, 255);
-  var g = random(0, 100);
-  var b = random(0, 255);
-  fill(r, g, b);
-  noStroke();
-  ellipse(x, y, w / 6);//main disc
-  stroke(255);
-  strokeWeight(2);
-  ellipse(x, y, 7, 3 + random(5));//inner disc
+}
+
+function saveImage() {
+	save("pattern.png");
 }
 
 
-// click to save image to Downloads folder
-//function mouseClicked() {
-//	save('pattern-1.jpg');
-//}
 
 
 
-//var bg = "green";
-//
-//function setup() {
-//  createCanvas(windowWidth, windowHeight / 2);
-//    pattern();
-//
-////  button.mousePressed("generate pattern");
-////  button.style("font-family", "roboto");
-////  button.id = "my-button";
-////  button.class("interface");
-//  var button = createButton("Save Image");
-//  var generatePattern = createButton("generate Pattern");
-//  generatePattern.mousePressed.mousePressed(pattern);
-//
-//  background(220);
-//  rectMode(CENTER);
-//  textAlign(CENTER, CENTER);
-//
-//  var columns = 8;
-//  var rows = 8;
-//  var w = width / columns;
-//  var h = height / rows;
-//
-//  // nested for loop
-//  for (let x = 0; x <= width; x += w) {
-//    for (let y = 0; y <= height; y += h) {
-//      // line(x1, y1, x2, y2);
-//      stroke(255);
-//      strokeWeight(2);
-//      var r = random(3);
-//      if (r > 2) {
-//        line(x + w, y, x + w, y + h);
-//      } else if (r > 1) {
-//        line(x, y, x + w, y + h);
-//      } else {
-//        line(x + w, y, x, y + h);
-//      }
-//    }
-//  }
-//}
 
-//    for (let x = 0; x <= width; x += w) {
-//        for (let y + 0; y <= height; y += h) {
-//
-//            var = random(3);
-//            if (r > 2) {
-//                ellipsex, y, w);
-//        } else if (r > 1) {
-//            rect(x + w / 2, y + h / 2, w, h);
-//        } else {}
-//
-//
-//    }
-//
-//}
-//
 
-//function saveImage()
 
-//
-//function setup() {
-//  createCanvas(windowWidth, windowHeight);
-//  background(220);
-//  rectMode(CENTER);
-//  textAlign(CENTER, CENTER);
-//
-//  var columns = 9;
-//  var rows = 7;
-//  var w = width / columns;
-//  var h = height / rows;
-//  //    var cap = 'hello';
-//
-//  for (let x = 0; x <= width; x += w) {
-//    for (let y = 0; y <= height; y += h) {
-//      discs(x - w, y - h, w, h); //discs
-//
-//      var rd = random(3);
-//      if (rd > 2) {
-//        stroke(0);
-//        strokeWeight(1.6);
-//        line(x + w, y, x + w, y + h);
-//      } else if (rd > 1) {
-//        var r = random(0, 255);
-//        var g = random(0, 100);
-//        var b = random(0, 255);
-//
-//        stroke(r, g, b);
-//        strokeWeight(2);
-//        line(x + w, y, x, y + h);
-//      } else {
-//        stroke(0);
-//        strokeWeight(1);
-//        line(x, y, x + w, y + h);
-//        discs(x - w, y - h, w, h); //discs
-//        noStroke();
-//
-//        rect(x - w, y - h, w / 4, h / 4, 10); // blocks
-//      }
-//    }
-//  }
-//}
-//
-//function discs(x, y, w, h) {
-//  var r = random(0, 255);
-//  var g = random(0, 100);
-//  var b = random(0, 255);
-//  fill(r, g, b);
-//  noStroke();
-//  ellipse(x, y, w / 6);//main disc
-//  stroke(255);
-//  strokeWeight(2);
-//  ellipse(x, y, 7, 3 + random(5));//inner disc
-//}
-//
-//// click to save image to Downloads folder
-//function mouseClicked() {
-//	save('pattern-1.jpg');
-//}
+

@@ -1,17 +1,28 @@
+
+@import url('https://fonts.googleapis.com/css?family=Hanalei+Fill');
 body {
-  font-family: Helvetica;
-  margin: 0;
-/*  overflow:hidden;*/
-  padding: 0;
-  background-color: aliceblue;
-  color: green;
+	margin: 0;
+	overflow: hidden;
 }
 
 button {
-    font-family: "roboto", sans-serif;
-    font-size: 1.7em;
-    background-color: burlywood;
-    border-collapse: yellow;
-    margin: 0.25em;
-    
+	font-family: "Hanalei Fill", sans-serif;
+	font-size: 1.5em;
+	background-color: lightblue;
+	color: white;
+	border-color: blue lightblue aqua;
+	margin: 0.25em;
+}
+
+.interface {
+	color: purple;
+}
+
+div {
+	font-size: 2em;
+	font-family: monospace;
+}
+
+input[type="range"] {
+	zoom: 2;
 }
