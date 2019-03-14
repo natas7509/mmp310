@@ -21,7 +21,7 @@ function setup() {
 	button.style('font-family', 'monaco');
 	button.id('my-button');
 	button.class('interface');
-	button.position(width / 2, height - 40);
+	button.position(800, height - 40);
 	
 	
 	var generatePattern = createButton("Generate Pattern");
