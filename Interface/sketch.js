@@ -18,10 +18,10 @@ function setup() {
 	var button = createButton("Save Image");
 	button.mousePressed(saveImage);
 //	button.style('color', bg);
-	button.style('font-family', 'monaco');
+	button.style('font-family', 'asap');
 	button.id('my-button');
 	button.class('interface');
-	button.position(800, height - 40);
+	button.position(800, height - 10);
 	
 	
 	var generatePattern = createButton("Generate Pattern");
@@ -31,7 +31,7 @@ function setup() {
 	
 	// columns slider
 	createDiv("Number of Columns");
-	var columnSlider = createSlider(2, 100, columns);
+	var columnSlider = createSlider(2, 50, columns);
 	columnSlider.input(setColumn);
 	
 	// rows 
@@ -43,6 +43,8 @@ function setup() {
     
     // rows 
 	
+    createDiv("click here");
+    
 	
 }
 
