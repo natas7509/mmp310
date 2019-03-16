@@ -21,18 +21,20 @@ function setup() {
 	button.style('font-family', 'asap');
 	button.id('my-button');
 	button.class('interface');
-	button.position(800, height - 10);
+	button.position(20, height + 160);
 	
 	
 	var generatePattern = createButton("Generate Pattern");
 	generatePattern.mousePressed(pattern);
 	generatePattern.class('interface');
-	generatePattern.position(width / 4, height - 40);
+//	generatePattern.position(x + width, height +40);
 	
 	// columns slider
 	createDiv("Number of Columns");
 	var columnSlider = createSlider(2, 50, columns);
 	columnSlider.input(setColumn);
+   
+    
 	
 	// rows 
 	
@@ -43,7 +45,7 @@ function setup() {
     
     // rows 
 	
-    createDiv("click here");
+    
     
 	
 }
