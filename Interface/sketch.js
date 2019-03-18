@@ -3,10 +3,11 @@
     MMP-310
     dom-work
     interface
-*/
 
-/* global variables */
-var bg = "green";
+
+***************************
+variables */
+
 var g = 255;
 var columns = 10;
 var rows = 8;
@@ -17,16 +18,16 @@ function setup() {
 
     var button = createButton("Save Image");
     button.mousePressed(saveImage);
-    //	button.style('color', bg);
     button.style("font-family", "asap");
     button.id("my-button");
     button.class("interface");
-    //  button.position(width / 2, height);
+
 
     var generatePattern = createButton("Generate Pattern");
     generatePattern.mousePressed(pattern);
     generatePattern.class("interface");
-    //	generatePattern.position(x + width, height +40);
+ 
+   
 
     // columns slider
     createDiv("Number of Columns");
@@ -45,8 +46,15 @@ function setup() {
     createDiv("Background Color");
     var colorSlider = createSlider(0, 255, g);
     colorSlider.input(setColor);
-}
+   
+   
+    
+} //end set up
 
+
+/********************************************
+    functions
+*/
 function setColumn() {
     columns = this.value();
     pattern();
