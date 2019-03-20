@@ -45,3 +45,37 @@ function popsicle(x, y, s) {
     ellipse(x + mouthSize, y + mouthSize, mouthSize, 10); //mouth
     //body**********************
 }
+
+/*
+var points = [];
+var r = rotate;
+
+function setup() {
+
+function draw() {
+    if (mousePressed)
+
+    points.push([mouseX, mouseY]);
+    
+}
+
+for (let i = 0; i < points.length; i++) {
+    let x = points[i][0];
+    let y = points.[i][1];
+    fill('gold');
+    ellipse( x, y, 20);
+    
+    }
+    
+    }
+
+
+
+
+
+
+
+
+
+
+*/
