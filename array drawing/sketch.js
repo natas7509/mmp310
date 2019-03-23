@@ -2,78 +2,74 @@
 	jon darling
     MMP-310
     week 7
- array popsicles
+    array drawing
     
 
 
 ***************************
 */
 
+var r_ = (255);
+var g_ = (0);
+var b_ = (0, 255);
 
 var r = 0;
-var popsicles = []; // empty cats
-
-
+var popsicles = []; // empty popsicle heads
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
     noStroke();
-    
-    
 }
 
-
 function draw() {
-	background(50);
-	noStroke();
-    
+    background(50);
+    noStroke();
+
     if (mouseIsPressed) {
-		popsicles.push([mouseX, mouseY]);	
+        popsicles.push([mouseX, mouseY]);
     }
-	
+
     for (let i = 0; i < popsicles.length; i++) {
         popsicle(popsicles[i][0], popsicles[i][1], 70);
         popsicles[i][0] += 1;
-       
     }
-    
+
     translate(width / 2, height / 2);
-	scale(r);
-	r += 0.01;
-	
-	for (let i = 0; i < popsicles.length; i++) {
-		let x = popsicles[i][0] - width / 2;
-		let y = popsicles[i][1] - height / 2;
-        
-		fill('white');
-        noStroke;
-		rect(x, y, 10, 10);
-        ellipse(x, y + 3, 5, );
-	}
-	
-	if (random(70) > 69) r = 0;
+    scale(r);
+    r += 0.01;
+
+    for (let i = 0; i < popsicles.length; i++) {
+        let x = popsicles[i][0] - width / 2;
+        let y = popsicles[i][1] - height / 2;
+        let s = popsicles[i][1] - height/ 4;
+
+   
+        fill(r_,g_,b_);
+        stroke(0);
+        strokeWeight(.2);
+        rect(x, y, 5, s); //flying stick
+        fill(r_,g_,b_);
+        stroke(0);
+        strokeWeight(.2);
+        ellipse(x, y + 3, s); //flying lolly pop
+
+
+    }
+
+    if (random(70) > 69) r = 0;
 
 
 }
 
-
-
-//function cat(x, y, s) {
-//	// cat drawing
-//	fill(s, 0, s);
-//	triangle(x - s*0.75, y - s/4, x + s*0.75, y - s/4, x, y + s/2); // ears
-//	ellipse(x, y, s); // face
-//	fill(255);
-//	ellipse(x - s/4, y, s/4, s/2); // left eye
-//	ellipse(x + s/4, y, s/4, s/2); // right eye
-//}
+/**************************
+popsicle head*/
 
 function popsicle(x, y, s) {
     var eyeSize = s / 9;
     //head********************
     fill("blue");
     stroke(0);
-    strokeWeight(1);
+    strokeWeight(.2);
     ellipse(x, y, s); // head
     //eyes*****************
     fill("white");
@@ -83,7 +79,7 @@ function popsicle(x, y, s) {
     var mouthSize = s / 4;
     fill("red");
     stroke(0);
-    strokeWeight(2);
+    strokeWeight(.5);
     ellipse(x + mouthSize, y + mouthSize, mouthSize, 10); //mouth
     //body**********************
 }
