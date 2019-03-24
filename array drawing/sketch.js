@@ -4,10 +4,8 @@
     week 7
     array drawing
     
-
-
-***************************
 */
+
 
 var r_ = (255);
 var g_ = (0);
@@ -30,7 +28,7 @@ function draw() {
     }
 
     for (let i = 0; i < popsicles.length; i++) {
-        popsicle(popsicles[i][0], popsicles[i][1], 70);
+        popsicle(popsicles[i][0], popsicles[i][1], 30);
         popsicles[i][0] += 1;
     }
 
@@ -56,13 +54,13 @@ function draw() {
 
     }
 
-    if (random(70) > 69) r = 0;
+    if (random(30) > 29) r = 0;
 
 
 }
 
-/**************************
-popsicle head*/
+
+
 
 function popsicle(x, y, s) {
     var eyeSize = s / 9;
@@ -83,3 +81,12 @@ function popsicle(x, y, s) {
     ellipse(x + mouthSize, y + mouthSize, mouthSize, 10); //mouth
     //body**********************
 }
+
+
+
+
+
+
+
+
+
