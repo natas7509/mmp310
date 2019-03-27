@@ -1,38 +1,57 @@
 /*
 	jon darling
     MMP-310
-    week 7
-    array drawing
-    popsicles & lollypops
+    wekk-8
+    DATA v-1
     
-*/
+ */
 
-var water;
+
+var rookies;
 function preload() {
-	water = loadTable('Water_Consumption_In_The_New_York_City.csv', 'csv', 'header');
+	rookies = loadTable('rookies.csv', 'csv', 'header');
 }
+
 function setup() {
-	createCanvas(640, 360);
-	background(51);
-	textAlign(CENTER, CENTER);
+	createCanvas(windowWidth, windowHeight);
+	textSize(50);
+	textAlign(LEFT, CENTER);
+    rectMode(CENTER);
+	noStroke();
+}
 
-	let x = 50;
-	let y = 25;
-	for (let i = 0; i < water.getRowCount(); i++) {
-		let year = water.getNum(i, 'Year');
-		let gallons = water.getNum(i, 3) / 4;
-
-		fill('lightblue');
-		ellipse(x, y, gallons);
-
+function draw() {
+	background('#888');
+	
+	for (let i = 0; i < rookies.getRowCount(); i++) {
+		let ast = rookies.getNum(i, 'ASTper');
+		let min = rookies.getNum(i, 'MPper');
+		let x = map(min, 0, 39, 0, width);
+		let y = map(ast, 0, 8, height - 10, 0);
+		
 		fill('white');
-		noStroke();
-		text(year, x, y);
-
-		x += 100;
-		if (x > width) {
-			x = 50;
-			y += 50;
+		if (dist(x, y, mouseX, mouseY) < 7.5) {
+			let player = rookies.getString(i, 'Player').split('\\')[0];
+            fill('blue');
+			text(player, 100, 200);
+            fill('red');
+			text(ast, 100, 250);
+            fill('white');
+			text(min, 100, 300);
+				
 		}
+        
+		rect(x, y, 15, 15);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
