@@ -49,3 +49,6 @@ function draw() {
     rect(x, height - y, w, height);  // graph rectangles
   }
 }
+
+
+//let w = Epl.getRowCount(width / 2, height);
