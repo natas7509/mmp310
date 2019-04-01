@@ -43,6 +43,7 @@ function draw() {
       fill(0);
       textSize(40);
       text("English Premier League Soccer", 500, 400);
+        text(' - Age and Market Value - ', 500, 450);
       fill("#fff");
     }
     rect(x, height - y, w, height);  // graph rectangles
