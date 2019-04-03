@@ -12,38 +12,25 @@ var spaceship = {
     y: 200,
     size: 50,
     speed: 20,
+   
+   
     
-
-
-    //    display: function () {
-    //        fill('blue');
-    //         triangle(
-    //        this.x, this.y,
-    //        this.x - this.size, this.y + this.size * 2,
-    //        this.x + this.size, this.y + this.size * 2);
+    
 
     display: function () {
          
         fill('#DE9151');
         
         ellipse(this.x, this.y + 100, this.size);//flames
-     
-        
-//        ellipse(this.x, this.y + 100, this.size);
-           fill('gold');
-        ellipse(this.x, this.y / 2, this.size / 2);
-        fill('#BBB5BD');
+        fill('#888');
         triangle(
             this.x, this.y,
             this.x - this.size, this.y + this.size * 2,
             this.x + this.size, this.y + this.size * 2);
-        
-        fill('black');
-        ellipse(this.x, this.y +50, this.size / 2, 10);
-
 
 
     },
+    
 
       //move spaceship
     update: function () {
@@ -70,27 +57,41 @@ var spaceship = {
     }
 };
 
+var asteroids = [];
+
 function setup() {
-    createCanvas(windowWidth, windowHeight);
-    noStroke();
+	createCanvas(windowWidth, windowHeight);
+	noStroke();
+	
+	// position the spaceship at start of game
+	spaceship.x = width/2;
+	spaceship.y = height - 200;
 }
 
 function draw() {
-    background(51);
+	background(51);
+	
+	// adds random asteroid
+	if (random(100) > 99) {
+		// create an asteroid
+		asteroids.push(new Asteroid());
+	}
+	
+	spaceship.display();
+	spaceship.update();
+	
+	for (let i = 0; i < asteroids.length; i++) {
+		asteroids[i].display();
+		asteroids[i].update();
+		asteroids[i].collide();
+	}
+}
 
 
 
-    //draw spaceship
-
-    spaceship.display();
-    spaceship.update();
 
 
 
 
 
 
-
-
-
-} //end draw
