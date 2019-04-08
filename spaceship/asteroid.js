@@ -6,7 +6,7 @@ class Asteroid {
   constructor() {
     this.x = random(width);
     this.y = -100;
-    this.size = 100;
+    this.size = random (100);
     this.speed = {
       x: random(-2, 2),
       y: random(5)
