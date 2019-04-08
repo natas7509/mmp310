@@ -19,17 +19,28 @@ var spaceship = {
 
     display: function () {
          
-        fill('#DE9151');
+       
+        fill(85);
+        ellipse(this.x - 20, this.y + 45, 10,  this.size);//leftGun
+        ellipse(this.x + 20, this.y + 45, 10,  this.size);//rightGun
         
-        ellipse(this.x, this.y + 100, this.size);//flames
-        fill('#888');
+        fill (52);
+         triangle(
+            this.x, this.y,
+            this.x -  this.size / 3, this.y + this.size * 2.5,
+            this.x + this.size / 3, this.y + this.size * 2.5);
+         fill('#DE9151');
+        ellipse(this.x, this.y + 100, 10, this.size);//flames
+        fill('#888')
         triangle(
             this.x, this.y,
             this.x - this.size, this.y + this.size * 2,
             this.x + this.size, this.y + this.size * 2);
-
-
+        
+        
+      
     },
+        
     
 
       //move spaceship
@@ -69,7 +80,7 @@ function setup() {
 }
 
 function draw() {
-	background(51);
+	background('black');
 	
 	// adds random asteroid
 	if (random(100) > 99) {
