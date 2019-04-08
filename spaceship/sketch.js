@@ -28,7 +28,7 @@ var spaceship = {
          triangle(
             this.x, this.y,
             this.x -  this.size / 3, this.y + this.size * 2.5,
-            this.x + this.size / 3, this.y + this.size * 2.5);
+            this.x + this.size / 3, this.y + this.size * 2.5);// turbines
          fill('#DE9151');
         ellipse(this.x, this.y + 100, 10, this.size);//flames
         fill('#888')
