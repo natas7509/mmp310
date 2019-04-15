@@ -22,12 +22,16 @@ function preload() {
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 	noStroke();
-	
+    a = new Asteroid();
 	spaceship = new Spaceship();
+   
 }
 
 function draw() {
 	background('black');
+    
+    a.display();
+ a.update();
 	
 	// adds random asteroid
 	if (random(100) > 99) {
@@ -46,7 +50,7 @@ function draw() {
 	}
     
    
-	
+
 	spaceship.controls();
 	spaceship.display();
 	spaceship.update();
@@ -54,6 +58,8 @@ function draw() {
 	for (let i = 0; i < asteroids.length; i++) {
 		asteroids[i].display();
 		asteroids[i].update();
+       
+ 
 		
 		// collision with spaceship
 		if (asteroids[i].collide(spaceship)) {

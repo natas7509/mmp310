@@ -34,9 +34,11 @@ class Entity {
 		var index = list.indexOf(this);
 		list.splice(index, 1);
 	}
+    
+    
 }
 
-
+ 
 
 
 
