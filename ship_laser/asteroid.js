@@ -32,9 +32,11 @@
 class Asteroid extends Entity {
   constructor() {
       super(random(width), -100);
-    this.x = 200;
-    this.y = 0;
-    this.size = 40;
+      this.speed.y = random(4)   ;
+      this.speed.x = random(-1, 1);
+
+
+//    this.size = 40;
     // random points
     this.points = [];
     var r = random(4, 8);
@@ -48,8 +50,12 @@ class Asteroid extends Entity {
   }
 
   display() {
-    fill('red');
-    beginShape();
+//    fill('red');
+      noFill();
+      stroke(255);
+      strokeWeight(1);
+        beginShape();
+     
     for (let i = 0; i < this.points.length; i++) {
        vertex(
          this.x + this.points[i].x, 
@@ -57,14 +63,17 @@ class Asteroid extends Entity {
        );
     }
     endShape(CLOSE);
+      
+      
     
   }
     
     
-    update() {
-    this.y += 1;
+    update() { 
+    this.y += 5;
     this.x += random(-1, 1);
-  }
+   
+  } 
     
 }
     

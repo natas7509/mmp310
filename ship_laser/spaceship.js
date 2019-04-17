@@ -8,7 +8,9 @@ class Spaceship extends Entity {
 	}
 
 	display() {
+        
         fill(85);
+          noStroke();
         ellipse(this.x - 20, this.y + 30, 10,  this.size);//leftGun
         ellipse(this.x + 20, this.y + 30, 10,  this.size);//rightGun
         
