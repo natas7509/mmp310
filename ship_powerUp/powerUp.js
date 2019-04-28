@@ -1,22 +1,22 @@
-/*
-	power up class
-*/
+/*powerUp class
+****************/
 
 class Powerup extends Entity {
-	constructor() {
+  	constructor() {
 		super(random(width), -100);
 		this.speed.x = random(-2, 2);
 		this.speed.y = 4; // random(10, 20);
 		this.size /= 2;
 	}
-	
-	display() {
-		fill('blue');
+    
+    display() {
+       	fill('blue');
 		noStroke();
 		rect(this.x, this.y, this.size, this.size);
-	}
-	
-	update() {
+        
+    }
+    
+   	update() {
 		super.update();
 		
 		if (this.y > height + this.size) {
@@ -29,3 +29,16 @@ class Powerup extends Entity {
 		
 	}
 }
+ 
+
+
+
+
+
+
+
+
+
+
+
+
