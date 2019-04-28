@@ -2,21 +2,20 @@
 ****************/
 
 class Powerup extends Entity {
-  	constructor() {
-		super(random(width), -100);
+	constructor() {
+		super(random(width), -110) ;
 		this.speed.x = random(-2, 2);
-		this.speed.y = 4; // random(10, 20);
+		this.speed.y = 5;
 		this.size /= 2;
 	}
-    
-    display() {
-       	fill('blue');
+	
+	display() {
+		fill('red');
 		noStroke();
 		rect(this.x, this.y, this.size, this.size);
-        
-    }
-    
-   	update() {
+	}
+	
+	update() {
 		super.update();
 		
 		if (this.y > height + this.size) {
@@ -24,13 +23,11 @@ class Powerup extends Entity {
 		}
 		
 		if (this.x <= 0 || this.x >= width) {
-			this.speed.x *= -1;	
+			this.speed.x *= -1; 	
 		}
 		
 	}
 }
- 
-
 
 
 
