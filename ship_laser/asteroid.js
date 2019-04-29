@@ -6,15 +6,15 @@ class Asteroid extends Entity {
       this.speed.x = random(-1, 1);
 
 
-//    this.size = 40;
     // random points
     this.points = [];
     var r = random(4, 8);
     for (let i = 0; i < r; i++) {
       var angle = PI * 2 / r * i;
+       
       this.points.push({
-        x: this.size * sin(angle) + random(-this.size/2, this.size/2),
-        y: this.size * cos(angle) + random(-this.size/2, this.size/2)
+        x: this.size  * sin(angle) + random(-this.size/2.5, this.size/2.5),
+        y: this.size  * cos(angle) + random(-this.size/2.5, this.size/2.5)
       });
     }
   }
