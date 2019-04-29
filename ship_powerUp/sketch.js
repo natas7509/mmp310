@@ -14,7 +14,7 @@ var asteroidProb = 99;
 // laser timeout counter
 var laserTimeout = 24; // number of frames between laser firing
 var laserCounter = 0; // counts frame each time
-var laserRed = 0;
+
 
 // score
 // one point for every asteroid destroyed
@@ -64,13 +64,15 @@ function draw() {
 	spaceship.controls();
 	spaceship.display();
 	spaceship.update();
+    
+
 	
 	for (let i = 0; i < powerups.length; i++) {
 		if (powerups[i].collide(spaceship)) {
 			// power up applied
-			laserTimeout -= 2;
+			laserTimeout -= 5 ;
 			powerups[i].died = true;
-			laserRed += 20;
+
 		}
 		powerups[i].display();
 		powerups[i].update();
@@ -109,7 +111,7 @@ function draw() {
 				score += 1;
 				
 				// after player hits asteroid, increase probability
-				asteroidProb -= 0.5;
+				asteroidProb -= .1;
 				if (laserTimeout < 24) {
 					laserTimeout += 0.5;
 				}
@@ -145,21 +147,20 @@ function draw() {
 	/* user display */
 	
 	// score
-	fill('orange');
+	fill('yellow');
 	textSize(40);
-	text('Score: ' + score, width - 100, 20);
+	text('Score: ' + score, width - 100, 30);
 	
 	// lives
-//	text('Lives: ' + lives, 70, 20);
 	for (let i = 0; i < lives; i++) {
 		var x = 20 + i * 30;
-		rect(x, 20, 20, 20);
+ 		rect(x, 30, 20, 20, 8);
 	}
 }
 
 function endGame() {
 	textSize(100);
-	fill('orange');
+	fill('red');
 	text('YOU DIED', width/2, height/2);
 	noLoop();
 }
