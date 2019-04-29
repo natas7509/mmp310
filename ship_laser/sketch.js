@@ -28,7 +28,7 @@ function setup() {
 }
 
 function draw() {
-     noStroke();
+   
     background('black');
 
     a.display();
