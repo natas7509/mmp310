@@ -15,6 +15,8 @@ var asteroidProb = 99;
 var laserTimeout = 24; // number of frames between laser firing
 var laserCounter = 0; // counts frame each time
 
+var asteroidSound;
+
 
 // score
 // one point for every asteroid destroyed
@@ -24,7 +26,8 @@ var kills = 0;
 var lives = 3;
 
 function preload() {
-    // if you have images
+    soundFormats('mp3', 'ogg');
+    asteroidSound = loadSound("game_sounds/asteroid-1.mp3");   
 }
 
 function setup() {
