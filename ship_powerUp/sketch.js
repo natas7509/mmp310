@@ -10,12 +10,16 @@ var powerups = [];
 
 // probability asteroid spawned in each frame
 var asteroidProb = 99;
+var asteroidSound;
+var laserSound;
+var gameSound;
 
 // laser timeout counter
 var laserTimeout = 24; // number of frames between laser firing
 var laserCounter = 0; // counts frame each time
 
-var asteroidSound;
+
+
 
 
 // score
@@ -27,7 +31,9 @@ var lives = 3;
 
 function preload() {
     soundFormats('mp3', 'ogg');
-    asteroidSound = loadSound("game_sounds/asteroid-1.mp3");   
+    asteroidSound = loadSound('game_sounds/asteroid-1.mp3');
+    laserSound = loadSound('game_sounds/laser.mp3');
+    gameSound = loadSound('game_sounds/gameSound.mp3');
 }
 
 function setup() {
@@ -36,10 +42,17 @@ function setup() {
     rectMode(CENTER);
     textAlign(CENTER, CENTER);
     spaceship = new Spaceship();
+    gameSound.setVolume(0.2);
+    gameSound.play();
+
+
+
+
 }
 
 function draw() {
     background(51);
+   
 
     // add random power ups
     if (random(1000) > 998) {
@@ -58,6 +71,8 @@ function draw() {
         if (keyIsDown(32) || keyIsDown(88)) {
             lasers.push(new Laser());
             laserCounter = laserTimeout;
+            laserSound.setVolume(0.1);
+            laserSound.play();
         }
     } else {
         laserCounter -= 1;
@@ -86,15 +101,15 @@ function draw() {
         asteroids[i].display();
         asteroids[i].update();
 
-        // collision with other asteroids
-//        for (let j = 0; j < asteroids.length; j++) {
-//            if (i != j) {
-//                if (asteroids[i].collide(asteroids[j])) {
-//                    asteroids[i].speed.x *= -1;
-//                    asteroids[j].speed.x *= -1;
-//                }
-//            }
-//        }
+        //collision with other asteroids
+        for (let j = 0; j < asteroids.length; j++) {
+            if (i != j) {
+                if (asteroids[i].collide(asteroids[j])) {
+                    asteroids[i].speed.x *= -1;
+                    asteroids[j].speed.x *= -1;
+                }
+            }
+        }
 
         // collision with spaceship
         if (asteroids[i].collide(spaceship)) {
@@ -110,6 +125,8 @@ function draw() {
             if (asteroids[i].collide(lasers[j])) {
                 asteroids[i].died = true;
                 lasers[j].died = true;
+                asteroidSound.setVolume(0.1);
+                asteroidSound.play();
 
 
 
@@ -128,21 +145,22 @@ function draw() {
     for (let i = 0; i < lasers.length; i++) {
         lasers[i].display();
         lasers[i].update();
+
     }
 
     // clean up dead asteroids and lasers
     for (let i = 0; i < asteroids.length; i++) {
 
-         if (asteroids[i].died) {
-            
+        if (asteroids[i].died) {
+
             // create smaller asteroids
-             if (asteroids[i].size >= 50) {
+            if (asteroids[i].size >= 50) {
                 for (let k = 0; k < 3; k++) {
                     asteroids.push(new Asteroid(asteroids[i].x, asteroids[i].y, 10));
                 }
-             }
-            
-            
+            }
+
+
             asteroids[i].remove(asteroids);
         }
     }
@@ -150,6 +168,7 @@ function draw() {
     for (let i = 0; i < lasers.length; i++) {
         if (lasers[i].died) {
             lasers[i].remove(lasers);
+
         }
     }
 
@@ -164,7 +183,8 @@ function draw() {
 
     // score
     fill('yellow');
-    textSize(40);
+    noStroke();
+    textSize(20);
     text('Kills - ' + kills, width - 100, 30);
 
     // lives
@@ -184,8 +204,9 @@ function keyReleased() {
 
 
 function endGame() {
-    textSize(100);
+    textSize(20);
     fill('red');
+    noStroke();
     text('Game Over', width / 2, height / 2);
     noLoop();
 }

@@ -6,8 +6,8 @@ class Entity {
 	constructor(x, y) {
 		this.x = x;
 		this.y = y;
-		this.size = 50;
-		this.speed = { x: 0, y: 0 };
+		this.size = width * .02;
+  		this.speed = { x: 0, y: 0 };
 	}
 	
 	update() {

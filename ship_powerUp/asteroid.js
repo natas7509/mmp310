@@ -54,6 +54,22 @@ class Asteroid extends Entity {
        
     }
     
+    update() {
+		super.update();
+		
+		// remove asteroids below the canvas
+		if (this.y > height + this.size) {
+			this.remove(asteroids);
+		}
+		
+		// bounce asteroids off sides
+		if (this.x <= 0 || this.x >= width) {
+			this.speed.x *= -1;
+		}
+		
+		
+	}
+    
     
 
 
