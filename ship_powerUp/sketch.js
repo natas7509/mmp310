@@ -18,7 +18,7 @@ var laserCounter = 0; // counts frame each time
 
 // score
 // one point for every asteroid destroyed
-var score = 0;
+var kills = 0;
 
 // player lives
 var lives = 3;
@@ -64,6 +64,7 @@ function draw() {
     spaceship.controls();
     spaceship.display();
     spaceship.update();
+    spaceship.checkEdges();
 
 
 
@@ -83,14 +84,14 @@ function draw() {
         asteroids[i].update();
 
         // collision with other asteroids
-        for (let j = 0; j < asteroids.length; j++) {
-            if (i != j) {
-                if (asteroids[i].collide(asteroids[j])) {
-                    asteroids[i].speed.x *= -1;
-                    asteroids[j].speed.x *= -1;
-                }
-            }
-        }
+//        for (let j = 0; j < asteroids.length; j++) {
+//            if (i != j) {
+//                if (asteroids[i].collide(asteroids[j])) {
+//                    asteroids[i].speed.x *= -1;
+//                    asteroids[j].speed.x *= -1;
+//                }
+//            }
+//        }
 
         // collision with spaceship
         if (asteroids[i].collide(spaceship)) {
@@ -110,7 +111,7 @@ function draw() {
 
 
                 // increment score
-                score += 1;
+                kills += 1;
 
                 // after player hits asteroid, increase probability
                 asteroidProb -= .1;
@@ -161,7 +162,7 @@ function draw() {
     // score
     fill('yellow');
     textSize(40);
-    text('Score: ' + score, width - 100, 30);
+    text('Kills - ' + kills, width - 100, 30);
 
     // lives
     for (let i = 0; i < lives; i++) {
@@ -169,6 +170,15 @@ function draw() {
         rect(x, 30, 20, 20, 8);
     }
 }
+
+
+// spaceship movement control
+function keyReleased() {
+    spaceship.isMovingLeft = false;
+    spaceship.isMovingRight = false;
+}
+
+
 
 function endGame() {
     textSize(100);

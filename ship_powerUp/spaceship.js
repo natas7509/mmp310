@@ -32,22 +32,30 @@ class Spaceship extends Entity {
             this.x, this.y,
             this.x - this.size, this.y + this.size/2,
             this.x + this.size, this.y + this.size/2);
+        
+   
+    //Spaceship stays within the screen
+    this.checkEdges = function() {
+        if (this.x < this.size) this.x = this.size;
+        else if (this.x > width - this.size) this.x = width - this.size;
     }
     
+}
     
-    
-    
+ 
 	
 	controls() {
 		if (keyIsDown(RIGHT_ARROW)) {
 			this.speed.x = 5;
 		} else if (keyIsDown(LEFT_ARROW)) {
 			this.speed.x = -5;
-		} else if (keyIsDown(UP_ARROW)) {
-            this.speed.y = -5;
-        } else if (keyIsDown(DOWN_ARROW)) {
-            this.speed.y = 5;
-        } else {
+		} 
+//        else if (keyIsDown(UP_ARROW)) {
+////            this.speed.y = -5;
+////        } else if (keyIsDown(DOWN_ARROW)) {
+////            this.speed.y = 5;
+////       } 
+        else {
 			this.speed.x = 0;	
 		}
 	}
