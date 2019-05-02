@@ -30,10 +30,10 @@ var kills = 0;
 var lives = 3;
 
 function preload() {
-    //    soundFormats('mp3', 'ogg');
+    soundFormats('mp3', 'ogg');
     asteroidSound = loadSound("game_sounds/asteroidSound.mp3");
     laserSound = loadSound("game_sounds/laser.mp3");
-//    gameSound = loadSound("game_sounds/gameSound.mp3");
+    //    gameSound = loadSound("game_sounds/gameSound.mp3");
     powerSound = loadSound("game_sounds/power.mp3");
 }
 
@@ -43,8 +43,8 @@ function setup() {
     rectMode(CENTER);
     textAlign(CENTER, CENTER);
     spaceship = new Spaceship();
-//    gameSound.setVolume(0.2);
-//    gameSound.play();
+    //    gameSound.setVolume(0.2);
+    //    gameSound.play();
 }
 
 function draw() {
@@ -87,7 +87,7 @@ function draw() {
             powerSound.play();
             laserTimeout -= 5;
             powerups[i].died = true;
-           
+
         }
         powerups[i].display();
         powerups[i].update();
