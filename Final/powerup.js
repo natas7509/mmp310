@@ -12,7 +12,7 @@ class Powerup extends Entity {
 	display() {
 		fill('red');
 		noStroke();
-		rect(this.x, this.y, this.size, this.size);
+		ellipse(this.x, this.y, this.size);
 	}
 	
 	update() {
@@ -28,14 +28,6 @@ class Powerup extends Entity {
 		
 	}
 }
-
-
-
-
-
-
-
-
 
 
 

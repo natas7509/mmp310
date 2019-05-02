@@ -6,7 +6,7 @@ class Entity {
 	constructor(x, y) {
 		this.x = x;
 		this.y = y;
-		this.size = width * .02;
+		this.size = width * 0.04;
   		this.speed = { x: 0, y: 0 };
 	}
 	
@@ -23,7 +23,7 @@ class Entity {
 		} else {
 			size = other.size;
 		}
-		if (d < size / 2) {
+		if (d < size) {
 			return true;
 		} else {
 			return false;

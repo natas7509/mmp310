@@ -4,13 +4,13 @@
 
 class Spaceship extends Entity {
 	constructor() {
-		super(width/2, height - 200);
+		super(width/2, height/1.3);
 	}
 
 	display() {
         
         fill(85);
-          noStroke();
+        noStroke();
         ellipse(this.x - 20, this.y + 30, 10,  this.size);//leftGun
         ellipse(this.x + 20, this.y + 30, 10,  this.size);//rightGun
         
@@ -19,22 +19,22 @@ class Spaceship extends Entity {
         ellipse(this.x + 20, this.y + 30, 2,  this.size);//rightGun - ORANGE
         
 	
-         fill (90);
-         triangle(
-            this.x, this.y,
-            this.x -  this.size / 3, this.y + this.size * .5,
-            this.x + this.size / 3, this.y + this.size * .5);
+//         fill (90);
+//         triangle(
+//            this.x, this.y,
+//            this.x - this.size, this.y + this.size/2,
+//            this.x + this.size, this.y + this.size/2);
         fill('#DE9151');
-        ellipse(this.x, this.y + 50, 18, this.size);//flames
+        ellipse(this.x, this.y + this.size, this.size / 4, this.size / 2); //flames
         fill('#888')
         triangle(
             
             this.x, this.y,
-            this.x - this.size, this.y + this.size/2,
-            this.x + this.size, this.y + this.size/2);
+            this.x - this.size, this.y + this.size,
+            this.x + this.size, this.y + this.size);
         
    
-    //Spaceship stays within the screen
+        //Spaceship stays within the screen
     this.checkEdges = function() {
         if (this.x < this.size) this.x = this.size;
         else if (this.x > width - this.size) this.x = width - this.size;

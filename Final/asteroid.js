@@ -11,7 +11,7 @@ class Asteroid extends Entity {
             this.speed.x = random(-5, 5);
         } else {
             this.speed.y = random(4);
-            this.speed.x = random(-1, 1);
+            this.speed.x = random(-4, 4);
         }
 
         // random points
@@ -20,8 +20,8 @@ class Asteroid extends Entity {
         for (let i = 0; i < r; i++) {
             var angle = PI * 2 / r * i;
             this.points.push({
-                x: this.size * sin(angle) + random(-this.size / 3, this.size / 3),
-                y: this.size * cos(angle) + random(-this.size / 3, this.size / 3)
+                x: this.size * sin(angle) + random(-this.size / 2, this.size / 2),
+                y: this.size * cos(angle) + random(-this.size / 2, this.size / 2)
             });
         }
     }
@@ -34,20 +34,20 @@ class Asteroid extends Entity {
         beginShape();
         for (let i = 0; i < this.points.length; i++) {
             vertex(
-                this.x + this.points[i].x / 1.5,
-                this.y + this.points[i].y / 1.5
+                this.x + this.points[i].x / 2.5,
+                this.y + this.points[i].y / 2.5
             );
         }
         endShape(CLOSE);
         
-         beginShape();
-        for (let g = 0; g < this.points.length; g++) {
-            vertex(
-                this.x + this.points[g].x / 10,
-                this.y + this.points[g].y / 10
-            );
-        }
-        endShape(CLOSE);
+//         beginShape();
+//        for (let g = 0; g < this.points.length; g++) {
+//            vertex(
+//                this.x + this.points[g].x / 20,
+//                this.y + this.points[g].y / 20
+//            );
+//        }
+//        endShape(CLOSE);
         
         
 
@@ -62,21 +62,9 @@ class Asteroid extends Entity {
 			this.remove(asteroids);
 		}
 		
-		// bounce asteroids off sides
+		 // bounce asteroids off sides
 		if (this.x <= 0 || this.x >= width) {
 			this.speed.x *= -1;
 		}
-		
-		
-	}
-    
-    
-
-
-//    update() {
-//        this.y += 5;
-//        this.x += random(-1, 1);
-//   
-//    }
-
+	}   
 }
