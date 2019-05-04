@@ -47,6 +47,16 @@ class Spaceship extends Entity {
             else if (this.y > height - this.size) this.y = height - this.size;
         }
     }
+    
+    update() {
+		super.update();
+		if (this.x > width) {
+			this.x = 0;
+		}
+		if (this.x < 0) {
+			this.x = width;
+		}
+	}
 
 
 
@@ -69,4 +79,6 @@ class Spaceship extends Entity {
     setSpeed(speed) {
 		this.speed.x = speed;
 	}
+  
+    
 }

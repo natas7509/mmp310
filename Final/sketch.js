@@ -261,43 +261,45 @@ function endGame() {
 /*-------------------------------
 MOBILE TOUCH
 -------------------------------*/
+
+
 var touch = {};
 
 function touchStarted() {
-    if (touches[0]) {
-        touch.x = touches[0].x;
-        touch.y = touches[0].y;
-        touch.px = touches[0].x;
-        touch.py = touches[0].y;
-    }
+	if (touches[0]) {
+		touch.x = touches[0].x;
+		touch.y = touches[0].y;
+		touch.px = touches[0].x;
+		touch.py = touches[0].y;
+	}
 }
 
 function touchMoved() {
-    if (touches[0]) {
-        touch.x = touches[0].x;
-        touch.y = touches[0].y;
-    }
+	if (touches[0]) {
+		touch.x = touches[0].x;
+		touch.y = touches[0].y;
+	}
 }
+
 
 // below threshold is tap, above is a swipe
 var threshold = 20;
-
 function touchEnded() {
-
-    // delta is change between touch start and end
-    var delta = touch.x - touch.px;
-
-    if (delta > threshold) {
-        // swipe right
-        spaceship.setSpeed(5);
-    } else if (delta < -threshold) {
-        // swipe left
-        spaceship.setSpeed(-5);
-    } else {
-        // tap	
-        lasers.push(new Laser());
-        laserCounter = laserTimeout;
-        spaceship.setSpeed(0);
-    }
-
+	
+	// delta is change between touch start and end
+	var delta = touch.x - touch.px;
+	
+	if (delta > threshold) {
+		// swipe right
+		spaceship.setSpeed(5);
+	} else if (delta < -threshold) {
+		// swipe left
+		spaceship.setSpeed(-5);	
+	} else {
+		// tap	
+		lasers.push(new Laser());
+		laserCounter = laserTimeout;
+		spaceship.setSpeed(0);
+	}
+		
 }
