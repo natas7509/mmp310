@@ -55,8 +55,8 @@ function preload() {
     lifeLost = loadSound("game_sounds/lifeLost.mp3");
     //images
     explosionImg = loadImage("images/explosion-1.png");
-
 }
+
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
@@ -72,11 +72,10 @@ function setup() {
     pilot.loop();
     pilot.setVolume(0.4);
     pilot.play();
-    
-    
 
 
 }
+
 
 function draw() {
     background(0);
@@ -88,12 +87,6 @@ function draw() {
         stars[i].display();
         stars[i].update();
     }
-    
-   
-
-
-
-
 
 
     // add random power ups
@@ -160,7 +153,7 @@ function draw() {
             lifeLost.setVolume(0.05);
             lifeLost.play();
             lives -= 1;
-            
+
             if (lives == 0) {
                 lifeLost.stop();
                 deathSound.setVolume(0.9);
@@ -169,7 +162,7 @@ function draw() {
                 explosionSound.play();
                 pilot.stop();
                 gameSound.stop();
-                image(explosionImg, spaceship.x - width*0.10, spaceship.y - height*0.08, width/4.0, height/3.7);
+                image(explosionImg, spaceship.x - width * 0.10, spaceship.y - height * 0.08, width / 4.0, height / 3.7);
                 endGame();
             }
         }
@@ -225,6 +218,11 @@ function draw() {
         }
     }
 
+    // teeth
+
+
+
+
     /*------------------------------------- 
       TEXT DISPLAY
       ---------------------------------------*/
@@ -238,13 +236,18 @@ function draw() {
 
     // lives
     for (let i = 0; i < lives; i++) {
-        var x = 20 + i * 30;
+        var x = 20 + i * 60;
         rect(x, 30, 20, 20, 8);
 
     }
 }
 
- 
+
+
+
+
+
+
 
 /*------------------------------------- 
    FUNCTIONS
@@ -267,6 +270,10 @@ function endGame() {
 }
 
 
+
+
+
+
 /*-------------------------------
 MOBILE TOUCH
 -------------------------------*/
@@ -275,40 +282,41 @@ MOBILE TOUCH
 var touch = {};
 
 function touchStarted() {
-	if (touches[0]) {
-		touch.x = touches[0].x;
-		touch.y = touches[0].y;
-		touch.px = touches[0].x;
-		touch.py = touches[0].y;
-	}
+    if (touches[0]) {
+        touch.x = touches[0].x;
+        touch.y = touches[0].y;
+        touch.px = touches[0].x;
+        touch.py = touches[0].y;
+    }
 }
 
 function touchMoved() {
-	if (touches[0]) {
-		touch.x = touches[0].x;
-		touch.y = touches[0].y;
-	}
+    if (touches[0]) {
+        touch.x = touches[0].x;
+        touch.y = touches[0].y;
+    }
 }
 
 
 // below threshold is tap, above is a swipe
 var threshold = 20;
+
 function touchEnded() {
-	
-	// delta is change between touch start and end
-	var delta = touch.x - touch.px;
-	
-	if (delta > threshold) {
-		// swipe right
-		spaceship.setSpeed(5);
-	} else if (delta < -threshold) {
-		// swipe left
-		spaceship.setSpeed(-5);	
-	} else {
-		// tap	
-		lasers.push(new Laser());
-		laserCounter = laserTimeout;
-		spaceship.setSpeed(0);
-	}
-		
+
+    // delta is change between touch start and end
+    var delta = touch.x - touch.px;
+
+    if (delta > threshold) {
+        // swipe right
+        spaceship.setSpeed(5);
+    } else if (delta < -threshold) {
+        // swipe left
+        spaceship.setSpeed(-5);
+    } else {
+        // tap	
+        lasers.push(new Laser());
+        laserCounter = laserTimeout;
+        spaceship.setSpeed(0);
+    }
+
 }
