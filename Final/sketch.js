@@ -196,9 +196,9 @@ function draw() {
     for (let i = 0; i < asteroids.length; i++) {
         if (asteroids[i].died) {
             // create smaller asteroids 
-            if (asteroids[i].size >= 50) {
-                for (let k = 0; k < random(2, 6); k++) {
-                    asteroids.push(new Asteroid(asteroids[i].x, asteroids[i].y, asteroids[i].size / 3));
+            if (asteroids[i].size >= 20) {
+                for (let k = 0; k < random(2, 4); k++) {
+                    asteroids.push(new Asteroid(asteroids[i].x, asteroids[i].y, asteroids[i].size / 2));
                 }
             }
 

@@ -49,9 +49,6 @@ class Asteroid extends Entity {
         //        }
         //        endShape(CLOSE);
 
-
-
-
     }
 
     update() {
