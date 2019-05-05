@@ -26,6 +26,8 @@ var powerSound;
 var deathSound;
 var explosionSound;
 var lifeLost;
+//images
+var explosionImg;
 
 // laser timeout counter
 var laserTimeout = 24; // number of frames between laser firing
@@ -40,9 +42,8 @@ var lives = 3;
 var text = 50;
 
 
-
 function preload() {
-
+    //sounds
     soundFormats('mp3', 'ogg');
     pilot = loadSound("game_sounds/pilot.mp3");
     gameSound = loadSound("game_sounds/gameSound.mp3");
@@ -52,6 +53,8 @@ function preload() {
     deathSound = loadSound("game_sounds/death.mp3");
     explosionSound = loadSound("game_sounds/shipExplode.mp3");
     lifeLost = loadSound("game_sounds/lifeLost.mp3");
+    //images
+    explosionImg = loadImage("images/explosion-1.png");
 
 }
 
@@ -69,7 +72,8 @@ function setup() {
     pilot.loop();
     pilot.setVolume(0.4);
     pilot.play();
-
+    
+    
 
 
 }
@@ -84,6 +88,8 @@ function draw() {
         stars[i].display();
         stars[i].update();
     }
+    
+   
 
 
 
@@ -163,6 +169,7 @@ function draw() {
                 explosionSound.play();
                 pilot.stop();
                 gameSound.stop();
+                image(explosionImg, spaceship.x - width*0.10, spaceship.y - height*0.08, width/4.0, height/3.7);
                 endGame();
             }
         }
@@ -236,6 +243,8 @@ function draw() {
 
     }
 }
+
+ 
 
 /*------------------------------------- 
    FUNCTIONS
