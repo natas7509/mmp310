@@ -254,6 +254,12 @@ function keyReleased() {
     spaceship.isMovingRight = false;
     spaceship.isMovingUp = false;
     spaceship.isMovingDown = false;
+
+    // when key is released set speed to 0
+    if ([37,38,39,40].includes(keyCode)) {
+        spaceship.setSpeed(0);
+        spaceship.speed.y = 0;
+    }
 }
 
 function endGame() {
@@ -272,6 +278,8 @@ function endGame() {
 /*-------------------------------
 MOBILE TOUCH
 -------------------------------*/
+
+
 
 
 var touch = {};
