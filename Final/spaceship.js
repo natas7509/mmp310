@@ -72,10 +72,10 @@ class Spaceship extends Entity {
         } else if (keyIsDown(DOWN_ARROW)) {
             this.speed.y = 5;
         }
-        else {
-            this.speed.x = 0;
-            this.speed.y = 0;
-        }
+        // else {
+        //     this.speed.x = 0;
+        //     this.speed.y = 0;
+        // }
     }
     setSpeed(speed) {
 		this.speed.x = speed;
