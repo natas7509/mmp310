@@ -36,7 +36,7 @@ class Spaceship extends Entity {
 
 
 
-        //Spaceship stays within the screen
+        //Spaceship stops when keys are released
         this.checkEdges = function () {
             if (this.x < this.size) this.x = this.size;
             else if (this.x > width - this.size) this.x = width - this.size;
@@ -47,14 +47,14 @@ class Spaceship extends Entity {
             else if (this.y > height - this.size) this.y = height - this.size;
         }
     }
-    
+    //Spaceship stays within the screen
     update() {
 		super.update();
-		if (this.x > width) {
-			this.x = 0;
-		}
-		if (this.x < 0) {
-			this.x = width;
+		if (this.x > width - this.size) {
+			this.x = width - this.size;
+        }
+		if (this.x < 0 + this.size) {
+			this.x = 0 + this.size;
 		}
 	}
 

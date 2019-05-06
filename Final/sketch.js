@@ -162,7 +162,7 @@ function draw() {
                 explosionSound.play();
                 pilot.stop();
                 gameSound.stop();
-                image(explosionImg, spaceship.x - width * 0.10, spaceship.y - height * 0.08, width / 4.0, height / 3.7);
+                image(explosionImg, spaceship.x - width * 0.10, spaceship.y - height * 0.08, width / 4, height / 3);
                 endGame();
             }
         }
@@ -217,11 +217,6 @@ function draw() {
             powerups[i].remove(powerups);
         }
     }
-
-    // teeth
-
-
-
 
     /*------------------------------------- 
       TEXT DISPLAY
