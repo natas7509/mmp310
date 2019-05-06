@@ -60,6 +60,7 @@ function preload() {
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
+    resetSketch();
     gravity = createVector(0, 0.03);
     noStroke();
     rectMode(CENTER);
@@ -72,10 +73,15 @@ function setup() {
     pilot.loop();
     pilot.setVolume(0.4);
     pilot.play();
-
+    
+    var button = createButton('reset')
+    button.mousePressed(resetSketch);
 
 }
 
+function resetSketch() {
+    
+}
 
 function draw() {
     background(0);
@@ -196,7 +202,7 @@ function draw() {
     for (let i = 0; i < asteroids.length; i++) {
         if (asteroids[i].died) {
             // create smaller asteroids 
-            if (asteroids[i].size >= 45) {
+            if (asteroids[i].size >= width/20) {
                 for (let k = 0; k < random(2, 4); k++) {
                     asteroids.push(new Asteroid(asteroids[i].x, asteroids[i].y, asteroids[i].size / 2));
                 }
@@ -236,12 +242,6 @@ function draw() {
 
     }
 }
-
-
-
-
-
-
 
 
 /*------------------------------------- 
