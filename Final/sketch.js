@@ -27,7 +27,7 @@ var powerSound;
 var deathSound;
 var explosionSound;
 var lifeLost;
-var awesome:
+var awesome;
 //images
 var explosionImg;
 
@@ -77,13 +77,23 @@ function setup() {
     pilot.loop();
     pilot.setVolume(0.4);
     pilot.play();
-
     var button = createButton('reset')
     button.mousePressed(resetSketch);
 
 }
 
 function resetSketch() {
+    stars = [];
+    spaceship;
+    asteroids = [];
+    lasers = [];
+    powerups = [];
+    kills = 0;
+    lives = 3;
+    asteroidProb = 99;
+    laserTimeout = 24;
+    laserCounter = 0;
+    gravity;
 
 }
 
@@ -190,11 +200,11 @@ function draw() {
                 kills += 1;
 
                 // congratulations on 20 kills
-                // if (kills = 20) {
-                //     awesome.setVolume(0.9);
-                //     awesome.play();
-                // } else(kills+=1);
-
+                if (kills % 20 == 0 && kills != 0) {
+                    awesome.setVolume(0.4);
+                    awesome.play();
+                }
+           
                 // after laser hits asteroid, increase probability
                 asteroidProb -= 0.1;
                 if (laserTimeout < 24) {
