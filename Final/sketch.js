@@ -10,6 +10,7 @@ var asteroids = [];
 var lasers = [];
 var powerups = [];
 
+
 //stars Gravity
 var gravity;
 
@@ -26,6 +27,7 @@ var powerSound;
 var deathSound;
 var explosionSound;
 var lifeLost;
+var awesome:
 //images
 var explosionImg;
 
@@ -42,6 +44,7 @@ var lives = 3;
 var text = 50;
 
 
+
 function preload() {
     //sounds
     soundFormats('mp3', 'ogg');
@@ -53,6 +56,7 @@ function preload() {
     deathSound = loadSound("game_sounds/death.mp3");
     explosionSound = loadSound("game_sounds/shipExplode.mp3");
     lifeLost = loadSound("game_sounds/lifeLost.mp3");
+    awesome = loadSound("game_sounds/awesome.mp3");
     //images
     explosionImg = loadImage("images/explosion-1.png");
 }
@@ -73,14 +77,14 @@ function setup() {
     pilot.loop();
     pilot.setVolume(0.4);
     pilot.play();
-    
+
     var button = createButton('reset')
     button.mousePressed(resetSketch);
 
 }
 
 function resetSketch() {
-    
+
 }
 
 function draw() {
@@ -173,6 +177,7 @@ function draw() {
             }
         }
 
+
         // detect all lasers
         for (let j = 0; j < lasers.length; j++) {
             if (asteroids[i].collide(lasers[j])) {
@@ -183,6 +188,12 @@ function draw() {
 
                 // increment score
                 kills += 1;
+
+                // congratulations on 20 kills
+                // if (kills = 20) {
+                //     awesome.setVolume(0.9);
+                //     awesome.play();
+                // } else(kills+=1);
 
                 // after laser hits asteroid, increase probability
                 asteroidProb -= 0.1;
@@ -202,7 +213,7 @@ function draw() {
     for (let i = 0; i < asteroids.length; i++) {
         if (asteroids[i].died) {
             // create smaller asteroids 
-            if (asteroids[i].size >= width/20) {
+            if (asteroids[i].size >= width / 20) {
                 for (let k = 0; k < random(2, 4); k++) {
                     asteroids.push(new Asteroid(asteroids[i].x, asteroids[i].y, asteroids[i].size / 2));
                 }
@@ -256,7 +267,7 @@ function keyReleased() {
     spaceship.isMovingDown = false;
 
     // when key is released set speed to 0
-    if ([37,38,39,40].includes(keyCode)) {
+    if ([37, 38, 39, 40].includes(keyCode)) {
         spaceship.setSpeed(0);
         spaceship.speed.y = 0;
     }

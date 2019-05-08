@@ -6,8 +6,9 @@ class Entity {
 	constructor(x, y) {
 		this.x = x;
 		this.y = y;
+		// this.r = random(0, 4);
 		this.size = width * 0.06;
-  		this.speed = { x: 0, y: 0 };
+  	this.speed = { x: 0, y: 0 };
 	}
 	
 	update() {
@@ -29,6 +30,10 @@ class Entity {
 			return false;
 		}
 	}
+
+
+
+	
     
 
 	remove(list) {

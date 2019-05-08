@@ -5,6 +5,7 @@
 class Spaceship extends Entity {
     constructor(x, y, size) {
         super(width / 2, height / 1.3);
+        let r = random(0, 10);
        
     }
 
@@ -27,6 +28,9 @@ class Spaceship extends Entity {
                     this.x + this.size, this.y + this.size/1.5);
         fill('#DE9151');
         ellipse(this.x, this.y + this.size, this.size / 4, this.size / 2); //flames
+       
+       
+
         fill('#888')
         triangle(
 
