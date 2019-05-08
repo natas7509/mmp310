@@ -13,6 +13,11 @@ var powerups = [];
 
 //stars Gravity
 var gravity;
+//resetSketch button
+
+
+
+
 
 
 // probability asteroid spawned in each frame
@@ -42,7 +47,6 @@ var kills = 0;
 // player lives
 var lives = 3;
 var text = 50;
-
 
 
 function preload() {
@@ -77,8 +81,9 @@ function setup() {
     pilot.loop();
     pilot.setVolume(0.4);
     pilot.play();
-    var button = createButton('reset')
+    var button = createButton('reset');
     button.mousePressed(resetSketch);
+    button.position(width / 1.2, height / 1.1);
 
 }
 
@@ -94,11 +99,15 @@ function resetSketch() {
     laserTimeout = 24;
     laserCounter = 0;
     gravity;
+    loop();
 
 }
 
+
+
 function draw() {
     background(0);
+
     /*-------------------------
     stars
     ----------------------*/
@@ -132,6 +141,7 @@ function draw() {
     } else {
         laserCounter -= 1;
     }
+
 
     //Spaceship Info
     spaceship.controls();
@@ -175,6 +185,7 @@ function draw() {
             lives -= 1;
 
             if (lives == 0) {
+
                 lifeLost.stop();
                 deathSound.setVolume(0.9);
                 deathSound.play();
@@ -184,9 +195,9 @@ function draw() {
                 gameSound.stop();
                 image(explosionImg, spaceship.x - width * 0.10, spaceship.y - height * 0.08, width / 4, height / 3);
                 endGame();
+
             }
         }
-
 
         // detect all lasers
         for (let j = 0; j < lasers.length; j++) {
@@ -200,11 +211,11 @@ function draw() {
                 kills += 1;
 
                 // congratulations on 20 kills
-                if (kills % 20 == 0 && kills != 0) {
+                if (kills % 25 == 0 && kills != 0) {
                     awesome.setVolume(0.4);
                     awesome.play();
                 }
-           
+
                 // after laser hits asteroid, increase probability
                 asteroidProb -= 0.1;
                 if (laserTimeout < 24) {
@@ -244,6 +255,8 @@ function draw() {
             powerups[i].remove(powerups);
         }
     }
+
+
 
     /*------------------------------------- 
       TEXT DISPLAY
