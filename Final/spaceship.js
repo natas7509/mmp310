@@ -5,40 +5,49 @@
 class Spaceship extends Entity {
     constructor(x, y, size) {
         super(width / 2, height / 1.3);
-        let r = random(0, 10);
-       
+
+
+
     }
 
     display() {
 
         fill(85);
         noStroke();
-        ellipse(this.x - this.size/3, this.y + this.size/2, this.size/4, this.size); //leftGun
-        ellipse(this.x + this.size/3, this.y + this.size/2, this.size/4,this.size); //rightGun
+        ellipse(this.x - this.size / 3, this.y + this.size / 2, this.size / 4, this.size); //leftGun
+        ellipse(this.x + this.size / 3, this.y + this.size / 2, this.size / 4, this.size); //rightGun
 
         fill('orange');
-        ellipse(this.x - this.size/3, this.y + this.size/2, 4, this.size); //leftGun-ORANGE
-        ellipse(this.x + this.size/3, this.y + this.size/2, 4, this.size); //rightGun - ORANGE
+        ellipse(this.x - this.size / 3, this.y + this.size / 2, 4, this.size); //leftGun-ORANGE
+        ellipse(this.x + this.size / 3, this.y + this.size / 2, 4, this.size); //rightGun - ORANGE
 
 
-                 fill (90);
-                 triangle(
-                    this.x, this.y,
-                    this.x - this.size, this.y + this.size/1.5,
-                    this.x + this.size, this.y + this.size/1.5);
-        fill('#DE9151');
-        ellipse(this.x, this.y + this.size, this.size / 4, this.size / 2); //flames
-       
-       
+        fill(90);
+        triangle(
+            this.x, this.y,
+            this.x - this.size, this.y + this.size / 1.5,
+            this.x + this.size, this.y + this.size / 1.5);
+
+            /*---------------------------
+            FLAMES
+            -------------------------------*/   
+        fill('#fff');
+        ellipse(this.x + random(-5, 5), this.y + this.size + random(-5, 5), this.size / 3, this.size / 1.4); //flameWhite
+        fill('#FFFF00');
+        ellipse(this.x + random(-1, 1), this.y + this.size + random(-1, 3), this.size / 1.5, this.size / 3); //flameInnerYellow
+        fill('red');
+        ellipse(this.x + random(-2, 2), this.y + this.size + random(-6, 8), this.size / 3, this.size / 2); //flameInnerRed
+        fill('orange');
+        ellipse(this.x + random(-2, 2), this.y + this.size + random(-1, 2), this.size / 3, this.size / 2); //flameInnerOrange
+        fill('brown');
+        ellipse(this.x + random(-2, 2), this.y + this.size + random(-1, 1), this.size / 5, this.size / 2); //flameInnerBrown
 
         fill('#888')
+        noStroke();
         triangle(
-
             this.x, this.y,
             this.x - this.size, this.y + this.size,
             this.x + this.size, this.y + this.size);
-
-
 
         //Spaceship stops when keys are released
         this.checkEdges = function () {
@@ -53,14 +62,14 @@ class Spaceship extends Entity {
     }
     //Spaceship stays within the screen
     update() {
-		super.update();
-		if (this.x > width - this.size) {
-			this.x = width - this.size;
+        super.update();
+        if (this.x > width - this.size) {
+            this.x = width - this.size;
         }
-		if (this.x < 0 + this.size) {
-			this.x = 0 + this.size;
-		}
-	}
+        if (this.x < 0 + this.size) {
+            this.x = 0 + this.size;
+        }
+    }
 
 
 
@@ -82,8 +91,8 @@ class Spaceship extends Entity {
         // }
     }
     setSpeed(speed) {
-		this.speed.x = speed;
-	}
-  
-    
+        this.speed.x = speed;
+    }
+
+
 }

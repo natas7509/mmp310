@@ -28,6 +28,7 @@ var pilot;
 var asteroidSound;
 var laserSound;
 var gameSound;
+var thrusters;
 var powerSound;
 var deathSound;
 var explosionSound;
@@ -49,11 +50,15 @@ var lives = 3;
 var text = 50;
 
 
+
+var button;
+
 function preload() {
     //sounds
     soundFormats('mp3', 'ogg');
     pilot = loadSound("game_sounds/pilot.mp3");
     gameSound = loadSound("game_sounds/gameSound.mp3");
+    thrusters = loadSound("game_sounds/thrusters.mp3");
     asteroidSound = loadSound("game_sounds/asteroidSound.mp3");
     laserSound = loadSound("game_sounds/laser.mp3");
     powerSound = loadSound("game_sounds/power.mp3");
@@ -63,8 +68,10 @@ function preload() {
     awesome = loadSound("game_sounds/awesome.mp3");
     //images
     explosionImg = loadImage("images/explosion-1.png");
-}
+    sparks = loadImage('images/sparks.png');
 
+
+}
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
@@ -74,16 +81,10 @@ function setup() {
     rectMode(CENTER);
     textAlign(CENTER, CENTER);
     spaceship = new Spaceship();
-    //looped sounds
-    gameSound.loop();
-    gameSound.setVolume(0.1);
-    gameSound.play();
-    pilot.loop();
-    pilot.setVolume(0.4);
-    pilot.play();
-    var button = createButton('reset');
+   
+    button = createButton('reset');
     button.mousePressed(resetSketch);
-    button.position(width / 1.2, height / 1.1);
+    button.position(width * 0.40, height - height + 5);
 
 }
 
@@ -95,6 +96,16 @@ function resetSketch() {
     powerups = [];
     kills = 0;
     lives = 3;
+     //looped sounds
+     gameSound.loop();
+     gameSound.setVolume(0.1);
+     gameSound.play();
+     thrusters.loop();
+     thrusters.setVolume(0.06);
+     thrusters.play();
+     pilot.loop();
+     pilot.setVolume(0.4);
+     pilot.play();
     asteroidProb = 99;
     laserTimeout = 24;
     laserCounter = 0;
@@ -107,7 +118,6 @@ function resetSketch() {
 
 function draw() {
     background(0);
-
     /*-------------------------
     stars
     ----------------------*/
@@ -116,6 +126,8 @@ function draw() {
         stars[i].display();
         stars[i].update();
     }
+
+    button.hide();
 
 
     // add random power ups
@@ -144,6 +156,7 @@ function draw() {
 
 
     //Spaceship Info
+    // spaceship.move();
     spaceship.controls();
     spaceship.display();
     spaceship.update();
@@ -181,8 +194,10 @@ function draw() {
         if (asteroids[i].collide(spaceship)) {
             asteroids[i].died = true;
             lifeLost.setVolume(0.05);
-            lifeLost.play();
+            lifeLost.play(); 
             lives -= 1;
+            image(sparks, spaceship.x - width * 0.10, spaceship.y - height * 0.08, width / 4, height / 3);
+
 
             if (lives == 0) {
 
@@ -193,8 +208,11 @@ function draw() {
                 explosionSound.play();
                 pilot.stop();
                 gameSound.stop();
+                thrusters.stop();
                 image(explosionImg, spaceship.x - width * 0.10, spaceship.y - height * 0.08, width / 4, height / 3);
+                button.show();
                 endGame();
+
 
             }
         }
