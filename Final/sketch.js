@@ -240,7 +240,7 @@ function draw() {
                 }
 
                  // congratulations on 50 kills
-                 if (kills % 40 == 0 && kills != 0) {
+                 if (kills % 50 == 0 && kills != 0) {
                     maverick.setVolume(2.3);
                     maverick.play();
                 }
