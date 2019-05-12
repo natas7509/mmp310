@@ -6,16 +6,14 @@ class Spaceship extends Entity {
     constructor(x, y, size) {
         super(width / 2, height / 1.3);
 
-
-
     }
 
     display() {
 
         fill(85);
         noStroke();
-        ellipse(this.x - this.size / 3, this.y + this.size / 2, this.size / 4, this.size); //leftGun
-        ellipse(this.x + this.size / 3, this.y + this.size / 2, this.size / 4, this.size); //rightGun
+        ellipse(this.x - this.size / 3 + random(-1, 1), this.y + this.size / 2, this.size / 4, this.size); //leftGun
+        ellipse(this.x + this.size / 3 + random(-1, 1), this.y + this.size / 2, this.size / 4, this.size); //rightGun
 
         fill('orange');
         ellipse(this.x - this.size / 3, this.y + this.size / 2, 4, this.size); //leftGun-ORANGE
@@ -28,9 +26,9 @@ class Spaceship extends Entity {
             this.x - this.size, this.y + this.size / 1.5,
             this.x + this.size, this.y + this.size / 1.5);
 
-            /*---------------------------
-            FLAMES
-            -------------------------------*/   
+        /*---------------------------
+        FLAMES
+        -------------------------------*/
         fill('#fff');
         ellipse(this.x + random(-5, 5), this.y + this.size + random(-5, 5), this.size / 3, this.size / 1.4); //flameWhite
         fill('#FFFF00');
@@ -60,6 +58,7 @@ class Spaceship extends Entity {
             else if (this.y > height - this.size) this.y = height - this.size;
         }
     }
+
     //Spaceship stays within the screen
     update() {
         super.update();

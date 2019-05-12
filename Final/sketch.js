@@ -15,11 +15,6 @@ var powerups = [];
 var gravity;
 //resetSketch button
 
-
-
-
-
-
 // probability asteroid spawned in each frame
 var asteroidProb = 99;
 
@@ -33,7 +28,9 @@ var powerSound;
 var deathSound;
 var explosionSound;
 var lifeLost;
-var awesome;
+var congrats;
+var almostThere;
+var maverick;
 //images
 var explosionImg;
 
@@ -65,7 +62,9 @@ function preload() {
     deathSound = loadSound("game_sounds/death.mp3");
     explosionSound = loadSound("game_sounds/shipExplode.mp3");
     lifeLost = loadSound("game_sounds/lifeLost.mp3");
-    awesome = loadSound("game_sounds/awesome.mp3");
+    congrats = loadSound("game_sounds/congrats.mp3");
+    almostThere = loadSound("game_sounds/almostThere.mp3");
+    maverick = loadSound("game_sounds/maverick.mp3");
     //images
     explosionImg = loadImage("images/explosion-1.png");
     sparks = loadImage('images/sparks.png');
@@ -81,11 +80,11 @@ function setup() {
     rectMode(CENTER);
     textAlign(CENTER, CENTER);
     spaceship = new Spaceship();
-   
     button = createButton('reset');
     button.mousePressed(resetSketch);
     button.position(width * 0.40, height - height + 5);
-
+    button.style("background-color", "yellow");
+  
 }
 
 function resetSketch() {
@@ -197,6 +196,7 @@ function draw() {
             lifeLost.play(); 
             lives -= 1;
             image(sparks, spaceship.x - width * 0.10, spaceship.y - height * 0.08, width / 4, height / 3);
+        
 
 
             if (lives == 0) {
@@ -213,7 +213,6 @@ function draw() {
                 button.show();
                 endGame();
 
-
             }
         }
 
@@ -229,9 +228,21 @@ function draw() {
                 kills += 1;
 
                 // congratulations on 20 kills
-                if (kills % 25 == 0 && kills != 0) {
-                    awesome.setVolume(0.4);
-                    awesome.play();
+                if (kills % 20 == 0 && kills != 0) {
+                    congrats.setVolume(3.3);
+                    congrats.play();
+                }
+
+                // congratulations on 30 kills
+                if (kills % 30 == 0 && kills != 0) {
+                    almostThere.setVolume(3.3);
+                    almostThere.play();
+                }
+
+                 // congratulations on 40 kills
+                 if (kills % 40 == 0 && kills != 0) {
+                    maverick.setVolume(2.3);
+                    maverick.play();
                 }
 
                 // after laser hits asteroid, increase probability
@@ -284,7 +295,7 @@ function draw() {
     fill("yellow");
     noStroke();
     textSize(width * 0.04);
-    text("Kills - " + kills, width * .8, height * 0.04);
+    text("Kills   " + kills, width * .8, height * 0.04);
 
 
     // lives
@@ -321,9 +332,6 @@ function endGame() {
     text("Game Over", width / 2, height / 2);
     noLoop();
 }
-
-
-
 
 
 
