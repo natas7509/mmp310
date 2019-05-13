@@ -46,8 +46,6 @@ var kills = 0;
 var lives = 3;
 var text = 50;
 
-
-
 var button;
 
 function preload() {
@@ -84,7 +82,7 @@ function setup() {
     button.mousePressed(resetSketch);
     button.position(width * 0.40, height - height + 5);
     button.style("background-color", "yellow");
-  
+    
 }
 
 function resetSketch() {
@@ -110,13 +108,14 @@ function resetSketch() {
     laserCounter = 0;
     gravity;
     loop();
-
 }
+
 
 
 
 function draw() {
     background(0);
+   
     /*-------------------------
     stars
     ----------------------*/
@@ -125,8 +124,10 @@ function draw() {
         stars[i].display();
         stars[i].update();
     }
-
+    
     button.hide();
+   
+   
 
 
     // add random power ups

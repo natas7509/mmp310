@@ -32,10 +32,6 @@ class Entity {
 	}
 
 
-
-	
-    
-
 	remove(list) {
 		var index = list.indexOf(this);
 		list.splice(index, 1);
