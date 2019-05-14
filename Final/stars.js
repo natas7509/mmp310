@@ -14,7 +14,7 @@ class Star extends Entity {
     }
     display() {
         stroke(this.color);
-        strokeWeight(2);
+        strokeWeight(3);
         point(this.pos.x, this.pos.y);
     }
     

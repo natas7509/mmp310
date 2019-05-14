@@ -73,7 +73,7 @@ function preload() {
 function setup() {
     createCanvas(windowWidth, windowHeight);
     resetSketch();
-    gravity = createVector(0, 0.03);
+    gravity = createVector(0, 0.10);
     noStroke();
     rectMode(CENTER);
     textAlign(CENTER, CENTER);
