@@ -47,6 +47,7 @@ var lives = 3;
 var text = 50;
 
 var button;
+var r, g, b;
 
 function preload() {
     //sounds
@@ -82,7 +83,14 @@ function setup() {
     button.mousePressed(resetSketch);
     button.position(width * 0.40, height - height + 5);
     button.style("background-color", "yellow");
-    
+
+    r = random(0, 255);
+    g = random(0, 255);
+    b = random(0, 255);
+
+    noStroke();
+
+
 }
 
 function resetSketch() {
@@ -93,16 +101,16 @@ function resetSketch() {
     powerups = [];
     kills = 0;
     lives = 3;
-     //looped sounds
-     gameSound.loop();
-     gameSound.setVolume(0.1);
-     gameSound.play();
-     thrusters.loop();
-     thrusters.setVolume(0.06);
-     thrusters.play();
-     pilot.loop();
-     pilot.setVolume(0.4);
-     pilot.play();
+    //looped sounds
+    gameSound.loop();
+    gameSound.setVolume(0.1);
+    gameSound.play();
+    thrusters.loop();
+    thrusters.setVolume(0.06);
+    thrusters.play();
+    pilot.loop();
+    pilot.setVolume(0.4);
+    pilot.play();
     asteroidProb = 99;
     laserTimeout = 24;
     laserCounter = 0;
@@ -111,11 +119,9 @@ function resetSketch() {
 }
 
 
-
-
 function draw() {
     background(0);
-   
+
     /*-------------------------
     stars
     ----------------------*/
@@ -124,10 +130,10 @@ function draw() {
         stars[i].display();
         stars[i].update();
     }
-    
+
     button.hide();
-   
-   
+
+
 
 
     // add random power ups
@@ -154,7 +160,6 @@ function draw() {
         laserCounter -= 1;
     }
 
-
     //Spaceship Info
     // spaceship.move();
     spaceship.controls();
@@ -165,13 +170,25 @@ function draw() {
     //PowerUps
     for (let i = 0; i < powerups.length; i++) {
         if (powerups[i].collide(spaceship)) {
+
             // power up applied
+            fill("yellow");
+            noStroke();
+            text('well done', width / 2, height / 2);
+
             powerSound.setVolume(0.1);
             powerSound.play();
             laserTimeout -= 5;
             powerups[i].died = true;
+            // Powerup Visual Confirmation
+            r = random(0, 255);
+            g = random(0, 255);
+            b = random(0, 255);
+            fill(r, g, b);
+            ellipse(width / 2, height / 2, 1000);
 
         }
+
         powerups[i].display();
         powerups[i].update();
     }
@@ -194,10 +211,12 @@ function draw() {
         if (asteroids[i].collide(spaceship)) {
             asteroids[i].died = true;
             lifeLost.setVolume(0.05);
-            lifeLost.play(); 
+            lifeLost.play();
             lives -= 1;
             image(sparks, spaceship.x - width * 0.10, spaceship.y - height * 0.08, width / 4, height / 3);
-        
+
+
+
 
 
             if (lives == 0) {
@@ -213,6 +232,8 @@ function draw() {
                 image(explosionImg, spaceship.x - width * 0.10, spaceship.y - height * 0.08, width / 4, height / 3);
                 button.show();
                 endGame();
+
+
 
             }
         }
@@ -240,8 +261,8 @@ function draw() {
                     almostThere.play();
                 }
 
-                 // congratulations on 50 kills
-                 if (kills % 50 == 0 && kills != 0) {
+                // congratulations on 50 kills
+                if (kills % 50 == 0 && kills != 0) {
                     maverick.setVolume(2.3);
                     maverick.play();
                 }

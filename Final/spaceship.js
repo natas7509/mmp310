@@ -40,12 +40,27 @@ class Spaceship extends Entity {
         fill('brown');
         ellipse(this.x + random(-2, 2), this.y + this.size + random(-1, 1), this.size / 5, this.size / 2); //flameInnerBrown
 
+            
+        // MAIN BODY
         fill('#888')
         noStroke();
         triangle(
             this.x, this.y,
             this.x - this.size, this.y + this.size,
             this.x + this.size, this.y + this.size);
+
+             /*---------------------------
+        COCKPIT
+        -------------------------------*/
+        noFill();
+        stroke(0);
+        ellipse(this.x, this.y + this.size - 50, this.size / 3, this.size / 2); //flameInnerRed
+        fill('black');
+        ellipse(this.x, this.y + this.size - 40, this.size / 8); //flameInnerOrange
+        fill('yellow');
+        line(this.x - 10, this.y+20, this.x+10, this.y+20); //flameInnerOrange
+        
+
 
         //Spaceship stops when keys are released
         this.checkEdges = function () {
