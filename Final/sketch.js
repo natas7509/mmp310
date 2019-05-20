@@ -384,7 +384,7 @@ function touchMoved() {
 
 
 // below threshold is tap, above is a swipe
-var threshold = 20;
+var threshold = 8;
 
 function touchEnded() {
 
@@ -393,10 +393,10 @@ function touchEnded() {
 
     if (delta > threshold) {
         // swipe right
-        spaceship.setSpeed(5);
+        spaceship.setSpeed(3);
     } else if (delta < -threshold) {
         // swipe left
-        spaceship.setSpeed(-5);
+        spaceship.setSpeed(-3);
     } else {
         // tap	
         lasers.push(new Laser());

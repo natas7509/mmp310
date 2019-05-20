@@ -54,11 +54,11 @@ class Spaceship extends Entity {
         -------------------------------*/
         noFill();
         stroke(0);
-        ellipse(this.x, this.y + this.size - 50, this.size / 3, this.size / 2); //flameInnerRed
+        ellipse(this.x, this.y + this.size - this.size / 2, this.size / 3, this.size / 2); //flameInnerRed
         fill('black');
-        ellipse(this.x, this.y + this.size - 40, this.size / 8); //flameInnerOrange
-        fill('yellow');
-        line(this.x - 10, this.y+20, this.x+10, this.y+20); //flameInnerOrange
+        ellipse(this.x, this.y + this.size / 1.5, this.size / 8); //flameInnerOrange
+        fill('white');
+        line(this.x - this.size / 6.4, this.y +this.size / 2.3, this.x + this.size / 6.4, this.y + this.size / 2.3); //flameInnerOrange
         
 
 
