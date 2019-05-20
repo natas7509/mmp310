@@ -393,10 +393,10 @@ function touchEnded() {
 
     if (delta > threshold) {
         // swipe right
-        spaceship.setSpeed(5);
+        spaceship.setSpeed(7);
     } else if (delta < -threshold) {
         // swipe left
-        spaceship.setSpeed(-5);
+        spaceship.setSpeed(-7);
     } else {
         // tap	
         lasers.push(new Laser());
