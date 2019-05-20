@@ -174,7 +174,7 @@ function draw() {
             // power up applied
             fill("yellow");
             noStroke();
-            text('well done', width / 2, height / 2);
+            // text('well done', width / 2, height / 2);
 
             powerSound.setVolume(0.1);
             powerSound.play();
