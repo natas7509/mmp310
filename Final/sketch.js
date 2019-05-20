@@ -384,7 +384,7 @@ function touchMoved() {
 
 
 // below threshold is tap, above is a swipe
-var threshold = 8;
+var threshold = 20;
 
 function touchEnded() {
 
